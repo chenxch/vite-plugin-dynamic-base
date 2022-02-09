@@ -7,7 +7,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vite-plugin-dynamic-assets": "^0.0.1",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12"
   },

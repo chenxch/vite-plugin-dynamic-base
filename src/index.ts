@@ -1,14 +1,14 @@
 import type { Plugin } from 'vite'
 import type { Options } from '../index'
 
-export function dynamicPublicPath(options?: Options): Plugin {
-  const { publicPath = 'window.__rollup__public__path__' } = options || {}
+export function dynamicBase(options?: Options): Plugin {
+  const { publicPath = 'window.__dynamic_base__' } = options || {}
   const preloadHelperId = 'vite/preload-helper'
   let assetsDir = 'assets'
   let base = '/'
 
   return {
-    name: 'vite-plugin-dynamic-assets',
+    name: 'vite-plugin-dynamic-base',
     enforce: 'post',
     apply: 'build',
     configResolved(configResolved) {

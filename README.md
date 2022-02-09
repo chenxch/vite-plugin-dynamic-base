@@ -1,13 +1,13 @@
-# vite-plugin-dynamic-assets
+# vite-plugin-dynamic-base
 
-[![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-assets?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-dynamic-assets)
+[![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-base?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-dynamic-base)
 
-- 🦾 Resolve all resource files dynamic publicpath, like Webpack's \_\_webpack__public__path__.
+- 🦾 Resolve all resource files dynamic publicPath, like Webpack's \_\_webpack_public_path__.
 
 ## Installation
 
 ```bash
-npm i vite-plugin-dynamic-assets -D
+npm i vite-plugin-dynamic-base -D
 ```
 ## Build Mode
 
@@ -18,11 +18,11 @@ npm i vite-plugin-dynamic-assets -D
 
 ```ts
 // vite.config.ts
-import { dynamicPublicPath } from 'vite-plugin-dynamic-assets'
+import { dynamicBase } from 'vite-plugin-dynamic-base'
 
 export default defineConfig({
   plugins: [
-    dynamicPublicPath({ /* options */ }),
+    dynamicBase({ /* options */ }),
   ],
 })
 ```
@@ -33,8 +33,8 @@ The following show the default values of the configuration
 
 ```ts
 Components({
-  // dynamic public path var string, default window.__rollup__public__path__
-  publicPath: 'window.__rollup__public__path__'
+  // dynamic public path var string, default window.__dynamic_base__
+  publicPath: 'window.__dynamic_base__'
 })
 ```
 
