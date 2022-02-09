@@ -1,0 +1,1 @@
+window.__rollup__public__path__ = 'http://localhost:8090'

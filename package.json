@@ -1,0 +1,33 @@
+{
+  "name": "vite-plugin-dynamic-assets",
+  "version": "0.0.1",
+  "description": "Resolve all resource files dynamic publicpath, like Webpack's __webpack__public__path__",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsc -p . -w --incremental --skipLibCheck",
+    "build": "rm -rf dist && tsc -p . --skipLibCheck"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenxch/vite-plugin-dynamic-assets.git"
+  },
+  "author": "chenxch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chenxch/vite-plugin-dynamic-assets/issues"
+  },
+  "homepage": "https://github.com/chenxch/vite-plugin-dynamic-assets",
+  "devDependencies": {
+    "@types/node": "^16.0.0",
+    "vite": "^2.4.0"
+  },
+  "keywords": [
+    "vite",
+    "publicpath",
+    "dynamic publicpath",
+    "__webpack_public_path__"
+  ]
+}
