@@ -11,9 +11,9 @@ export function dynamicBase(options?: Options): Plugin {
     name: 'vite-plugin-dynamic-base',
     enforce: 'post',
     apply: 'build',
-    configResolved(configResolved) {
-      assetsDir = configResolved.build.assetsDir
-      base = configResolved.base
+    configResolved(resolvedConfig) {
+      assetsDir = resolvedConfig.build.assetsDir
+      base = resolvedConfig.base
     },
     transform(code, id) {
       if (id === preloadHelperId) {
