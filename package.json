@@ -23,6 +23,7 @@
   "devDependencies": {
     "@types/node": "^16.0.0",
     "node-html-parser": "^5.2.0",
+    "typescript": "^4.5.5",
     "vite": "^2.4.0"
   },
   "keywords": [
@@ -32,5 +33,8 @@
     "dynamic publicpath",
     "dynamic base",
     "__webpack_public_path__"
-  ]
+  ],
+  "dependencies": {
+    "@swc/core": "1.2.140"
+  }
 }
