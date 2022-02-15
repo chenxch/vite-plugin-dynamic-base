@@ -35,7 +35,7 @@ The following show the default values of the configuration
 dynamicBase({
   // dynamic public path var string, default window.__dynamic_base__
   publicPath: 'window.__dynamic_base__',
-  // transformIndexHtml, default false, maybe change default true
+  // dynamic load resources on index.html, default false. maybe change default true
   transformIndexHtml:  false
 })
 ```
