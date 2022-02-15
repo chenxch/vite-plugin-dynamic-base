@@ -1,3 +1,4 @@
 export interface Options {
-  publicPath?: string
+  publicPath?: string,
+  transformIndexHtml?: boolean
 }

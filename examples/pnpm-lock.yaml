@@ -4,7 +4,7 @@ specifiers:
   '@vitejs/plugin-vue': ^2.0.0
   typescript: ^4.4.4
   vite: ^2.7.2
-  vite-plugin-dynamic-base: 0.0.3
+  vite-plugin-dynamic-base: 0.1.0
   vue: ^3.2.25
   vue-router: ^4.0.12
   vue-tsc: ^0.29.8
@@ -17,7 +17,7 @@ devDependencies:
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.1.0_vite@2.7.13+vue@3.2.29
   typescript: registry.npmmirror.com/typescript/4.5.5
   vite: registry.npmmirror.com/vite/2.7.13
-  vite-plugin-dynamic-base: 0.0.3
+  vite-plugin-dynamic-base: 0.1.0
   vue-tsc: registry.npmmirror.com/vue-tsc/0.29.8_typescript@4.5.5
 
 packages:
@@ -166,8 +166,8 @@ packages:
     dev: true
     optional: true
 
-  /vite-plugin-dynamic-base/0.0.3:
-    resolution: {integrity: sha512-6mhCERJQCfiWoGjKW4Vf649zd71sqNBJBgYjp7Ssydb6RiGidQs3A2dktcJ2GW8BZnaoD9mWexJgSWE3DVWorw==}
+  /vite-plugin-dynamic-base/0.1.0:
+    resolution: {integrity: sha512-N5eDRra7BGJbThEQ8IHodUPOrC1J41itKPx6VoMTP6b1cYzfwh354hiw+N3iNh1ooEw0vfChv8Jduh10AuUkow==}
     dev: true
 
   registry.npmmirror.com/@babel/helper-validator-identifier/7.16.7:
