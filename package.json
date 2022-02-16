@@ -35,6 +35,6 @@
     "__webpack_public_path__"
   ],
   "dependencies": {
-    "@swc/core": "1.2.140"
+    "@swc/core": "1.2.141"
   }
 }

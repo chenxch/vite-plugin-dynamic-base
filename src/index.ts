@@ -29,9 +29,7 @@ class PlaceholderReplacer extends Visitor {
       type: 'StringLiteral',
       span: { start: 0, end: 0, ctxt: 0 },
       value: str,
-      // @ts-ignore Typing is wrong: hasEscape => has_escape
-      hasEscape: true,
-      kind: { type: 'normal', containsQuote: true }
+      hasEscape: true
     });
 
     let subExpressions: Expression[] = Array(stringParts.length * 2 - 1);
