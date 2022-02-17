@@ -5,7 +5,7 @@ import { dynamicBase } from 'vite-plugin-dynamic-base'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // base: 'a/b',
+  base: process.env.NODE_ENV === 'production' ? '/__vite_base__/' : '/',
   plugins: [
     vue(),
     dynamicBase({ transformIndexHtml: true })
