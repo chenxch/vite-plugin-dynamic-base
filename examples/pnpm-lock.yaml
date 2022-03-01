@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@vitejs/plugin-legacy': ^1.7.1
   '@vitejs/plugin-vue': ^2.0.0
   typescript: ^4.4.4
   vite: ^2.7.2
@@ -14,6 +15,7 @@ dependencies:
   vue-router: registry.npmmirror.com/vue-router/4.0.12_vue@3.2.29
 
 devDependencies:
+  '@vitejs/plugin-legacy': 1.7.1_vite@2.7.13
   '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.1.0_vite@2.7.13+vue@3.2.29
   typescript: registry.npmmirror.com/typescript/4.5.5
   vite: registry.npmmirror.com/vite/2.7.13
@@ -21,6 +23,30 @@ devDependencies:
   vue-tsc: registry.npmmirror.com/vue-tsc/0.29.8_typescript@4.5.5
 
 packages:
+
+  /@babel/standalone/7.17.4:
+    resolution: {integrity: sha512-WrWUXB+d3q3Qj7hr95fhuN7kGAPneCM+eljIXnSBGi2US4GuCZJ+pjw/Me+vSetz0OzjbxujIlpY+KJ2utNHhQ==}
+    engines: {node: '>=6.9.0'}
+    dev: true
+
+  /@vitejs/plugin-legacy/1.7.1_vite@2.7.13:
+    resolution: {integrity: sha512-RqgILXsGpfV7NHodVCdBVau8ss5+ynMXp6JGF/F7nhSy0bnwSQPlMS3KFqh7twfifXK8VuMriqfU4CxOiqmNnA==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      vite: ^2.8.0
+    dependencies:
+      '@babel/standalone': 7.17.4
+      core-js: 3.21.0
+      magic-string: 0.25.7
+      regenerator-runtime: 0.13.9
+      systemjs: 6.12.1
+      vite: registry.npmmirror.com/vite/2.7.13
+    dev: true
+
+  /core-js/3.21.0:
+    resolution: {integrity: sha512-YUdI3fFu4TF/2WykQ2xzSiTQdldLB4KVuL9WeAy5XONZYt5Cun/fpQvctoKbCgvPhmzADeesTk/j2Rdx77AcKQ==}
+    requiresBuild: true
+    dev: true
 
   /esbuild-android-arm64/0.13.15:
     resolution: {integrity: sha512-m602nft/XXeO8YQPUDVoHfjyRVPdPgjyyXOxZ44MK/agewFFkPa8tUo6lAzSWh5Ui5PB4KR9UIFTSBKh/RrCmg==}
@@ -165,6 +191,24 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /magic-string/0.25.7:
+    resolution: {integrity: sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==}
+    dependencies:
+      sourcemap-codec: 1.4.8
+    dev: true
+
+  /regenerator-runtime/0.13.9:
+    resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+    dev: true
+
+  /sourcemap-codec/1.4.8:
+    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    dev: true
+
+  /systemjs/6.12.1:
+    resolution: {integrity: sha512-hqTN6kW+pN6/qro6G9OZ7ceDQOcYno020zBQKpZQLsJhYTDMCMNfXi/Y8duF5iW+4WWZr42ry0MMkcRGpbwG2A==}
+    dev: true
 
   /vite-plugin-dynamic-base/0.1.0:
     resolution: {integrity: sha512-N5eDRra7BGJbThEQ8IHodUPOrC1J41itKPx6VoMTP6b1cYzfwh354hiw+N3iNh1ooEw0vfChv8Jduh10AuUkow==}

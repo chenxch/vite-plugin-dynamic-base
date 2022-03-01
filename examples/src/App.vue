@@ -11,6 +11,7 @@ console.log(locales2)
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
+  <img alt="Vue logo" src="./assets/logo2.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
   <h1>Hello App!</h1>
   <p>
@@ -30,6 +31,8 @@ console.log(locales2)
 </template>
 
 <style>
+@import url("./assets/styles/base.css");
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

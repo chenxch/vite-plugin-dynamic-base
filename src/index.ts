@@ -5,7 +5,7 @@ import type { Options } from '../index'
 export function dynamicBase(options?: Options): Plugin {
   const defaultOptions:Options ={
     publicPath: 'window.__dynamic_base__',
-    transformIndexHtml: false // maybe dfault true
+    transformIndexHtml: false // maybe default true
   } 
   
   const { 
@@ -16,6 +16,7 @@ export function dynamicBase(options?: Options): Plugin {
   const preloadHelperId = 'vite/preload-helper'
   let assetsDir = 'assets'
   let base = '/'
+  let legacy = false
 
   return {
     name: 'vite-plugin-dynamic-base',
@@ -24,6 +25,7 @@ export function dynamicBase(options?: Options): Plugin {
     configResolved(resolvedConfig) {
       assetsDir = resolvedConfig.build.assetsDir
       base = resolvedConfig.base
+      legacy = !!resolvedConfig.define['import.meta.env.LEGACY']
     },
     transform(code, id) {
       if (id === preloadHelperId) {
@@ -34,15 +36,24 @@ export function dynamicBase(options?: Options): Plugin {
       }
     },
     generateBundle({ format }, bundle) {
-      if (format !== 'es') {
+      if (format !== 'es' && format !== 'system') {
         return
       }
       const assetsMarker = `${base}${assetsDir}/`
-      const assetsMarkerRE = new RegExp(`("${assetsMarker}*.*.*")`, 'g')
       for (const file in bundle) {
         const chunk = bundle[file]
+        const assetsMarkerRE = new RegExp(`("${assetsMarker}[.\\w]*")`, 'g')
         if (chunk.type === 'chunk' && chunk.code.indexOf(assetsMarker) > -1) {
           chunk.code = chunk.code.replace(assetsMarkerRE, `${publicPath}+$1`)
+          if(format === 'system'){
+            // replace css url
+            const assetsUrlRE = new RegExp(`url\\((${assetsMarker}[.\\w]*)\\)`, 'g');
+            chunk.code = chunk.code.replace(assetsUrlRE, `url("+${publicPath}+"$1)`);
+          }
+        }
+        if(legacy && chunk.type === 'asset' && chunk.fileName.endsWith('.html') && transformIndexHtml){
+          // console.log(chunk.source)
+          chunk.source = (chunk.source as string).replace(/=([a-zA-Z]+.src)/g,`=${publicPath}+$1`).replace(/(System.import\()/g, `$1${publicPath}+`)
         }
       }
     },
@@ -65,6 +76,7 @@ export function dynamicBase(options?: Options): Plugin {
           return result
         })
         const injectCode = `  <script>
+  (function(){
     var preloads = ${JSON.stringify(preloads)};
     function assign() {
       var target = arguments[0];
@@ -91,6 +103,7 @@ export function dynamicBase(options?: Options): Plugin {
       }
       document.getElementsByTagName(item.parentTagName)[0].appendChild(childNode);
     }
+  })();
   </script>
 </head>`
         return document.outerHTML.replace('</head>', injectCode)
