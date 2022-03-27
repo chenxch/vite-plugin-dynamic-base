@@ -1,17 +1,16 @@
 import type { Plugin, IndexHtmlTransformResult } from 'vite'
 import { parse } from 'node-html-parser'
 import type { Options } from '../index'
+import { transformAssets } from './transform'
+// import MagicString from 'magic-string'
 
 export function dynamicBase(options?: Options): Plugin {
-  const defaultOptions:Options ={
+  const defaultOptions: Options = {
     publicPath: 'window.__dynamic_base__',
     transformIndexHtml: false // maybe default true
-  } 
-  
-  const { 
-    publicPath,
-    transformIndexHtml
-  } = {...defaultOptions ,...(options || {})}
+  }
+
+  const { publicPath, transformIndexHtml } = { ...defaultOptions, ...(options || {}) }
 
   const preloadHelperId = 'vite/preload-helper'
   let assetsDir = 'assets'
@@ -36,31 +35,33 @@ export function dynamicBase(options?: Options): Plugin {
       }
     },
     generateBundle({ format }, bundle) {
-      if (format !== 'es' && format !== 'system') {
-        return
-      }
-      const assetsMarker = `${base}${assetsDir}/`
-      for (const file in bundle) {
-        const chunk = bundle[file]
-        const assetsMarkerRE = new RegExp(`("${assetsMarker}[.\\w]*")`, 'g')
-        if (chunk.type === 'chunk' && chunk.code.indexOf(assetsMarker) > -1) {
-          chunk.code = chunk.code.replace(assetsMarkerRE, `${publicPath}+$1`)
-          if(format === 'system'){
-            // replace css url
-            const assetsUrlRE = new RegExp(`url\\((${assetsMarker}[.\\w]*)\\)`, 'g');
-            chunk.code = chunk.code.replace(assetsUrlRE, `url("+${publicPath}+"$1)`);
-          }
-        }
-        if(legacy && chunk.type === 'asset' && chunk.fileName.endsWith('.html') && transformIndexHtml){
-          // console.log(chunk.source)
-          chunk.source = (chunk.source as string).replace(/=([a-zA-Z]+.src)/g,`=${publicPath}+$1`).replace(/(System.import\()/g, `$1${publicPath}+`)
-        }
-      }
+      const options = { base, assetsDir, publicPath, legacy, transformIndexHtml }
+      transformAssets(format, bundle, options)
+      // if (format !== 'es' && format !== 'system') {
+      //   return
+      // }
+      // const assetsMarker = `${base}${assetsDir}/`
+      // for (const file in bundle) {
+      //   const chunk = bundle[file]
+      //   const assetsMarkerRE = new RegExp(`("${assetsMarker}[.\\w]*")`, 'g')
+      //   if (chunk.type === 'chunk' && chunk.code.indexOf(assetsMarker) > -1) {
+      //     chunk.code = chunk.code.replace(assetsMarkerRE, `${publicPath}+$1`)
+      //     if(format === 'system'){
+      //       // replace css url
+      //       const assetsUrlRE = new RegExp(`url\\((${assetsMarker}[.\\w]*)\\)`, 'g');
+      //       chunk.code = chunk.code.replace(assetsUrlRE, `url("+${publicPath}+"$1)`);
+      //     }
+      //   }
+      //   if(legacy && chunk.type === 'asset' && chunk.fileName.endsWith('.html') && transformIndexHtml){
+      //     // console.log(chunk.source)
+      //     chunk.source = (chunk.source as string).replace(/=([a-zA-Z]+.src)/g,`=${publicPath}+$1`).replace(/(System.import\()/g, `$1${publicPath}+`)
+      //   }
+      // }
     },
     transformIndexHtml: {
       enforce: 'post',
       transform(html): IndexHtmlTransformResult {
-        if(!transformIndexHtml) {
+        if (!transformIndexHtml) {
           return html
         }
         const document = parse(html, { comment: true })
