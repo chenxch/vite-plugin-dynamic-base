@@ -1,8 +1,8 @@
 # vite-plugin-dynamic-base
 
-[![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-base?color=a1b858&label=)](https://www.
-npmjs.com/package/vite-plugin-dynamic-base)
+[![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-base?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-dynamic-base)
 
+<p align='center'>
 <a href="https://github.com/chenxch/vite-plugin-dynamic-base/blob/main/README.md">English</a> | <b>简体中文</b>
 </p>
 
