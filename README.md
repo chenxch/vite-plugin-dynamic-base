@@ -2,6 +2,10 @@
 
 [![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-base?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-dynamic-base)
 
+<p align='center'>
+<b>English</b> | <a href="https://github.com/chenxch/vite-plugin-dynamic-base/blob/main/README.zh-CN.md">简体中文</a>
+</p>
+
 - 🦾 Resolve all resource files dynamic publicPath, like Webpack's `__webpack_public_path__`.
 
 ## Installation
