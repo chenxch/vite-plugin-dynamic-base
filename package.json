@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsc -p . -w --incremental --skipLibCheck",
     "build": "rm -rf dist && tsc -p . --skipLibCheck",
-    "test": "vitest",
+    "test": "vitest run",
     "coverage": "vitest run --coverage",
     "tdd": "vitest -w"
   },
