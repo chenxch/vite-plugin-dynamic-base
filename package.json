@@ -4,8 +4,8 @@
   "description": "Resolve all resource files dynamic publicPath, like Webpack's __webpack_public_path__",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "tsc -p . -w --incremental --skipLibCheck",
-    "build": "rm -rf dist && tsc -p . --skipLibCheck",
+    "dev": "tsc -p ./tsconfig.build.json -w --incremental --skipLibCheck",
+    "build": "rm -rf dist && tsc -p ./tsconfig.build.json --skipLibCheck",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "tdd": "vitest -w"

@@ -16,8 +16,9 @@ describe('vite `define` cause null pointer exception in `configResolved`', () =>
     const configWithoutDefine = defineConfig({
       plugins: [plugin],
     }) as InlineConfig
-    await expect(() => resolveConfig(configWithoutDefine, 'build')).rejects.toMatch(
-      /TypeError: Cannot read property 'import\.meta\.env\.LEGACY' of undefined/,
-    )
+    // await expect(() => resolveConfig(configWithoutDefine, 'build')).rejects.toMatch(
+    //   /TypeError: Cannot read property 'import\.meta\.env\.LEGACY' of undefined/,
+    // )
+    await expect(resolveConfig(configWithoutDefine, 'build')).resolves.toMatchSnapshot()
   })
 })

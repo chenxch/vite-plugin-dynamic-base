@@ -1,5 +1,285 @@
 // Vitest Snapshot v1
 
+exports[`vite \`define\` cause null pointer exception in \`configResolved\` > exception occurs 1`] = `
+{
+  "assetsInclude": [Function],
+  "base": "/",
+  "build": {
+    "assetsDir": "assets",
+    "assetsInlineLimit": 4096,
+    "chunkSizeWarningLimit": 500,
+    "commonjsOptions": {
+      "extensions": [
+        ".js",
+        ".cjs",
+      ],
+      "include": [
+        /node_modules/,
+      ],
+    },
+    "cssCodeSplit": true,
+    "cssTarget": [
+      "es2019",
+      "edge88",
+      "firefox78",
+      "chrome87",
+      "safari13.1",
+    ],
+    "dynamicImportVarsOptions": {
+      "exclude": [
+        /node_modules/,
+      ],
+      "warnOnError": true,
+    },
+    "emptyOutDir": null,
+    "lib": false,
+    "manifest": false,
+    "minify": "esbuild",
+    "outDir": "/Users/bytedance/rmc-fe/forked-vite-plugin-dynamic-base/dist",
+    "polyfillModulePreload": true,
+    "reportCompressedSize": true,
+    "rollupOptions": {
+      "input": "/Users/bytedance/rmc-fe/forked-vite-plugin-dynamic-base/index.html",
+    },
+    "sourcemap": false,
+    "ssr": false,
+    "ssrManifest": false,
+    "target": [
+      "es2019",
+      "edge88",
+      "firefox78",
+      "chrome87",
+      "safari13.1",
+    ],
+    "terserOptions": {},
+    "watch": null,
+    "write": true,
+  },
+  "cacheDir": "/Users/bytedance/rmc-fe/forked-vite-plugin-dynamic-base/node_modules/.vite",
+  "command": "build",
+  "configFile": undefined,
+  "configFileDependencies": [],
+  "createResolver": [Function],
+  "env": {
+    "BASE_URL": "/",
+    "DEV": true,
+    "MODE": "development",
+    "PROD": false,
+  },
+  "inlineConfig": {
+    "plugins": [
+      {
+        "apply": "build",
+        "configResolved": [Function],
+        "enforce": "post",
+        "generateBundle": [Function],
+        "name": "vite-plugin-dynamic-base",
+        "transform": [Function],
+        "transformIndexHtml": {
+          "enforce": "post",
+          "transform": [Function],
+        },
+      },
+    ],
+  },
+  "isProduction": false,
+  "logger": {
+    "clearScreen": [Function],
+    "error": [Function],
+    "hasErrorLogged": [Function],
+    "hasWarned": false,
+    "info": [Function],
+    "warn": [Function],
+    "warnOnce": [Function],
+  },
+  "mode": "development",
+  "optimizeDeps": {
+    "esbuildOptions": {
+      "keepNames": undefined,
+      "preserveSymlinks": undefined,
+    },
+  },
+  "packageCache": Map {},
+  "plugins": [
+    {
+      "buildStart": [Function],
+      "name": "alias",
+      "resolveId": [Function],
+    },
+    {
+      "load": [Function],
+      "name": "vite:modulepreload-polyfill",
+      "resolveId": [Function],
+    },
+    {
+      "configureServer": [Function],
+      "load": [Function],
+      "name": "vite:resolve",
+      "resolveId": [Function],
+    },
+    {
+      "buildStart": [Function],
+      "load": [Function],
+      "name": "vite:html-inline-script-proxy",
+      "resolveId": [Function],
+    },
+    {
+      "buildStart": [Function],
+      "configureServer": [Function],
+      "name": "vite:css",
+      "transform": [Function],
+    },
+    {
+      "configureServer": [Function],
+      "name": "vite:esbuild",
+      "transform": [Function],
+    },
+    {
+      "name": "vite:json",
+      "transform": [Function],
+    },
+    {
+      "load": [Function],
+      "name": "vite:wasm",
+      "resolveId": [Function],
+    },
+    {
+      "load": [Function],
+      "name": "vite:worker",
+      "transform": [Function],
+    },
+    {
+      "buildStart": [Function],
+      "generateBundle": [Function],
+      "load": [Function],
+      "name": "vite:asset",
+      "renderChunk": [Function],
+      "resolveId": [Function],
+    },
+    {
+      "name": "vite:define",
+      "transform": [Function],
+    },
+    {
+      "buildStart": [Function],
+      "generateBundle": [Function],
+      "name": "vite:css-post",
+      "renderChunk": [Function],
+      "transform": [Function],
+    },
+    {
+      "buildEnd": [Function],
+      "buildStart": [Function],
+      "name": "vite:watch-package-data",
+      "watchChange": [Function],
+    },
+    {
+      "buildStart": [Function],
+      "generateBundle": [Function],
+      "name": "vite:build-html",
+      "transform": [Function],
+    },
+    {
+      "buildStart": [Function],
+      "load": [Function],
+      "moduleParsed": [Function],
+      "name": "commonjs",
+      "resolveId": [Function],
+      "transform": [Function],
+    },
+    {
+      "buildStart": [Function],
+      "load": [Function],
+      "name": "vite:data-uri",
+      "resolveId": [Function],
+    },
+    {
+      "name": "rollup-plugin-dynamic-import-variables",
+      "transform": [Function],
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "transform": [Function],
+    },
+    {
+      "apply": "build",
+      "configResolved": [Function],
+      "enforce": "post",
+      "generateBundle": [Function],
+      "name": "vite-plugin-dynamic-base",
+      "transform": [Function],
+      "transformIndexHtml": {
+        "enforce": "post",
+        "transform": [Function],
+      },
+    },
+    {
+      "generateBundle": [Function],
+      "load": [Function],
+      "name": "vite:build-import-analysis",
+      "renderChunk": [Function],
+      "resolveId": [Function],
+      "transform": [Function],
+    },
+    {
+      "name": "vite:esbuild-transpile",
+      "renderChunk": [Function],
+    },
+    {
+      "buildEnd": [Function],
+      "generateBundle": [Function],
+      "name": "vite:reporter",
+      "renderChunk": [Function],
+      "renderStart": [Function],
+      "transform": [Function],
+      "writeBundle": [Function],
+    },
+    {
+      "load": [Function],
+      "name": "vite:load-fallback",
+    },
+  ],
+  "preview": {
+    "cors": undefined,
+    "host": undefined,
+    "https": undefined,
+    "open": undefined,
+    "port": undefined,
+    "proxy": undefined,
+    "strictPort": undefined,
+  },
+  "publicDir": "/Users/bytedance/rmc-fe/forked-vite-plugin-dynamic-base/public",
+  "resolve": {
+    "alias": [
+      {
+        "find": /\\^\\[\\\\/\\]\\?@vite\\\\/env/,
+        "replacement": [Function],
+      },
+      {
+        "find": /\\^\\[\\\\/\\]\\?@vite\\\\/client/,
+        "replacement": [Function],
+      },
+    ],
+    "dedupe": undefined,
+  },
+  "root": "/Users/bytedance/rmc-fe/forked-vite-plugin-dynamic-base",
+  "server": {
+    "fs": {
+      "allow": [
+        "/Users/bytedance/rmc-fe/forked-vite-plugin-dynamic-base",
+      ],
+      "deny": [
+        ".env",
+        ".env.*",
+        "*.{crt,pem}",
+      ],
+      "strict": true,
+    },
+    "preTransformRequests": true,
+  },
+}
+`;
+
 exports[`vite \`define\` cause null pointer exception in \`configResolved\` > works well with \`define\` 1`] = `
 {
   "assetsInclude": [Function],
