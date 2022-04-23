@@ -13,6 +13,21 @@
 ```bash
 npm i vite-plugin-dynamic-base -D
 ```
+
+## 变更日志
+
+### 0.3.0
+
+_2022-04-23_
+
+#### 新特性
+
+- 添加简单的单元测试 `vitest`. (#5 by @zhoujinfu)
+
+#### Bug fixes
+
+- import.env.LEGACY 未定义的错误. (#5 by @zhoujinfu)
+
 ## 编译模式
 
 - [x] es

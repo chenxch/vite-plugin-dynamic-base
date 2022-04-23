@@ -5,4 +5,4 @@ dist-ssr
 *.local
 # tests
 coverage
-# __snapshots__/
+__snapshots__/
