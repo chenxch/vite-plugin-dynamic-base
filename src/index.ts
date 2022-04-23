@@ -25,7 +25,7 @@ export function dynamicBase(options?: Options): Plugin {
     configResolved(resolvedConfig) {
       assetsDir = resolvedConfig.build.assetsDir
       base = resolvedConfig.base
-      legacy = !!resolvedConfig.define['import.meta.env.LEGACY']
+      legacy = resolvedConfig?.define?.['import.meta.env.LEGACY']
     },
     transform(code, id) {
       if (id === preloadHelperId) {
