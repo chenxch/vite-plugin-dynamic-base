@@ -10,6 +10,9 @@
     "module": "commonjs",
     "lib": ["ESNext","DOM"],
     "sourceMap": true,
+    "types": [
+      "vitest/globals"
+    ]
   },
-  "include": ["./src"]
+  "include": ["./src", "./tests"]
 }
