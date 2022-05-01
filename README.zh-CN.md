@@ -16,22 +16,36 @@ npm i vite-plugin-dynamic-base -D
 
 ## 变更日志
 
-### 0.3.0
+### 0.4.0
 
-_2022-04-23_
+_2022-05-01_
 
 #### 新特性
 
-- 添加简单的单元测试 `vitest`. (#5 by @zhoujinfu)
+- 兼容`vite-plugin-pwa`
+- base标记
 
-#### Bug fixes
+#### Bug 修复
 
-- import.env.LEGACY 未定义的错误. (#5 by @zhoujinfu)
+- 多层级cdn引用资源路径修复
+
+#### 重构
+
+- 更换匹配方案，使用base属性作为标记位
+- 代码结构调整，引入异步处理
+
+[变更日志](./CHANGELOG.zh-CN.md)
 
 ## 编译模式
 
 - [x] es
 - [x] system
+
+## 兼容插件
+
+- [x] [@vitejs/plugin-legacy](https://www.npmjs.com/package/@vitejs/plugin-legacy)
+- [x] [vite-plugin-pwa](https://www.npmjs.com/package/vite-plugin-pwa)
+
 
 ## 使用
 
@@ -39,7 +53,9 @@ _2022-04-23_
 // vite.config.ts
 import { dynamicBase } from 'vite-plugin-dynamic-base'
 
-export default defineConfig({
+export default defineConfig({ 
+  // base: "/",
+  base: process.env.NODE_ENV === "production" ? "/__dynamic_base__/" : "/",
   plugins: [
     dynamicBase({ /* options */ }),
   ],

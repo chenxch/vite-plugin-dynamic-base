@@ -6,6 +6,7 @@ describe('vite `define` cause null pointer exception in `configResolved`', () =>
 
   it('works well with `define`', async () => {
     const configWithDefine = defineConfig({
+      base: "/__dynamic_base__/",
       define: {},
       plugins: [plugin],
     }) as InlineConfig
@@ -14,6 +15,7 @@ describe('vite `define` cause null pointer exception in `configResolved`', () =>
 
   it('exception occurs', async () => {
     const configWithoutDefine = defineConfig({
+      base: "/__dynamic_base__/",
       plugins: [plugin],
     }) as InlineConfig
     // await expect(() => resolveConfig(configWithoutDefine, 'build')).rejects.toMatch(

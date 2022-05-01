@@ -14,7 +14,6 @@ describe('setup ok', () => {
             "enforce": "post",
             "generateBundle": [Function],
             "name": "vite-plugin-dynamic-base",
-            "transform": [Function],
             "transformIndexHtml": {
               "enforce": "post",
               "transform": [Function],

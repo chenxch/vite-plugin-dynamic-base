@@ -18,23 +18,36 @@ npm i vite-plugin-dynamic-base -D
 
 ## Changelog
 
-### 0.3.0
+### 0.4.0
 
-_2022-04-23_
+_2022-05-01_
 
 #### Features
 
-- setup simple unit tests with `vitest`. (#5 by @zhoujinfu)
+- compatible `vite-plugin-pwa`
+- base mark
 
 #### Bug fixes
 
-- import.env.LEGACY cause undefined errors with vite config `define`. (#5 by @zhoujinfu)
+- Multi-level cdn reference resource path fix
+
+#### Refactors
+
+- Replace the matching scheme and use the base attribute as a marker bit
+- Code structure adjustment, introduction of asynchronous processing
+
+[Changelogs](./CHANGELOG.md)
 
 
 ## Build Mode
 
 - [x] es
 - [x] system
+
+## Compatible plugins
+
+- [x] [@vitejs/plugin-legacy](https://www.npmjs.com/package/@vitejs/plugin-legacy)
+- [x] [vite-plugin-pwa](https://www.npmjs.com/package/vite-plugin-pwa)
 
 ## Usage
 
@@ -43,6 +56,8 @@ _2022-04-23_
 import { dynamicBase } from 'vite-plugin-dynamic-base'
 
 export default defineConfig({
+  // base: "/",
+  base: process.env.NODE_ENV === "production" ? "/__dynamic_base__/" : "/",
   plugins: [
     dynamicBase({ /* options */ }),
   ],
