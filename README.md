@@ -26,6 +26,7 @@ _2022-05-01_
 
 - compatible `vite-plugin-pwa`
 - base mark
+(From the original automatic search and replacement to using base as the marker bit to replace, this is for more accurate processing, and in some scenarios in pwa, you need to use base as the marker bit)
 
 #### Bug fixes
 
