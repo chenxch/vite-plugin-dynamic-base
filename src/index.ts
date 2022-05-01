@@ -23,7 +23,7 @@ export function dynamicBase(options?: Options): Plugin {
     configResolved(resolvedConfig) {
       assetsDir = resolvedConfig.build.assetsDir
       base = resolvedConfig.base
-      legacy = !!(resolvedConfig?.define?.['import.meta.env.LEGACY'])
+      legacy = !!resolvedConfig?.define?.['import.meta.env.LEGACY']
       if (!base || base === '/') {
         throw new Error(
           'Please replace `config.base` in build with unique markup text, (e.g. /__dynamic_base__/)\n' +
@@ -33,7 +33,7 @@ export function dynamicBase(options?: Options): Plugin {
             '  (in your vite.config.ts/js file)'
         )
       }
-      Object.assign(baseOptions,{ assetsDir, base, legacy })
+      Object.assign(baseOptions, { assetsDir, base, legacy })
     },
     async generateBundle({ format }, bundle) {
       if (format !== 'es' && format !== 'system') {
@@ -43,12 +43,12 @@ export function dynamicBase(options?: Options): Plugin {
         Object.entries(bundle).map(async ([, chunk]) => {
           if (chunk.type === 'chunk' && chunk.code.indexOf(base) > -1) {
             chunk.code = await transformChunk(format, chunk.code, baseOptions)
-          } else if( chunk.type === 'asset' && typeof chunk.source === 'string'){
-            if(!chunk.fileName.endsWith('.html')){
+          } else if (chunk.type === 'asset' && typeof chunk.source === 'string') {
+            if (!chunk.fileName.endsWith('.html')) {
               chunk.source = await transformAsset(chunk.source, baseOptions)
-            } else if(legacy && transformIndexHtml){
+            } else if (legacy && transformIndexHtml) {
               chunk.source = await transformLegacyHtml(chunk.source, baseOptions)
-            }    
+            }
           }
         })
       )
