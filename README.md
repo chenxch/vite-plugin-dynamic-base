@@ -18,24 +18,13 @@ npm i vite-plugin-dynamic-base -D
 
 ## Changelog
 
-### 0.4.0
+### 0.4.1
 
-_2022-05-01_
-
-#### Features
-
-- compatible `vite-plugin-pwa`
-- base mark
-(From the original automatic search and replacement to using base as the marker bit to replace, this is for more accurate processing, and in some scenarios in pwa, you need to use base as the marker bit)
-
+_2022-05-09_
 #### Bug fixes
 
-- Multi-level cdn reference resource path fix
+- Legacy is invalid in browsers such as IE11.
 
-#### Refactors
-
-- Replace the matching scheme and use the base attribute as a marker bit
-- Code structure adjustment, introduction of asynchronous processing
 
 [Changelogs](./CHANGELOG.md)
 

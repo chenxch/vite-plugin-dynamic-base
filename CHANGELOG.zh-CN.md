@@ -1,5 +1,12 @@
 ## Changelog
 
+### 0.4.1
+
+_2022-05-09_
+#### Bug fixes
+
+- Legacy is invalid in browsers such as IE11.
+
 ### 0.4.0
 
 _2022-05-01_
