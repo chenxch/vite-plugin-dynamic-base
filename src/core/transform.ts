@@ -24,9 +24,25 @@ export function transformLegacyHtml(code: string, options: TransformOptions) {
   let content = replaceSrc(publicPath, code)
   content = replace(base, '/', content)
   content = replaceImport(publicPath, content)
-  const legacyScript = `<script nomodule>!function () { try { new Function("m", "return import(m)") } catch (o) { console.warn("vite: loading legacy build because dynamic import is unsupported, syntax error above should be ignored"); var e = document.getElementById("vite-legacy-polyfill"), n = document.createElement("script"); n.src = ${publicPath} + e.getAttribute("src"), n.onload = function () { System.import(${publicPath} + document.getElementById("vite-legacy-entry").getAttribute("data-src")) }, document.body.appendChild(n) } }();</script>
-  </body>`
-  content = replace('</body>', legacyScript, content)
+  const document = parse(content, { comment: true })
+  const legacyPolyfill = document.getElementById('vite-legacy-polyfill')
+  if (legacyPolyfill) {
+    legacyPolyfill.setAttribute('data-src', legacyPolyfill.getAttribute('src'))
+    legacyPolyfill.removeAttribute('src')
+    legacyPolyfill.innerHTML = `!(function() {
+      var e = document.createElement('script')
+      e.src = ${publicPath} + document.getElementById('vite-legacy-polyfill').getAttribute('data-src');
+      e.onload = function() {
+        System.import(${publicPath}+document.getElementById('vite-legacy-entry').getAttribute('data-src'))
+      };
+      document.body.appendChild(e)
+    })();`
+  }
+  const legacyEntry = document.getElementById('vite-legacy-entry')
+  if (legacyEntry) {
+    legacyEntry.innerHTML = ''
+  }
+  content = document.outerHTML
   return content
 }
 

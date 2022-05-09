@@ -22,7 +22,7 @@ export function replaceUrl(mark: string, placeholder: string, code: string) {
 
 // replace asset src
 export function replaceSrc(placeholder: string, code: string) {
-  return code.replace(/=([a-zA-Z]+).src/g, `=${placeholder}+$1.getAttribute('src')`)
+  return code.replace(/=([a-zA-Z]+).src/g, `=${placeholder}+$1.getAttribute('data-src')`)
 }
 
 export function replaceImport(placeholder: string, code: string) {
