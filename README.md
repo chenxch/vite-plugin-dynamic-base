@@ -18,12 +18,12 @@ npm i vite-plugin-dynamic-base -D
 
 ## Changelog
 
-### 0.4.1
+### 0.4.3
 
-_2022-05-09_
+_2022-06-21_
 #### Bug fixes
 
-- Legacy is invalid in browsers such as IE11.
+- template strings does not work.([#8](https://github.com/chenxch/vite-plugin-dynamic-base/issues/8))
 
 
 [Changelogs](./CHANGELOG.md)

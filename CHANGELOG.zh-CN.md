@@ -1,5 +1,12 @@
 ## Changelog
 
+### 0.4.3
+
+_2022-06-21_
+#### Bug fixes
+
+- 修复字符串模板不工作.([#8](https://github.com/chenxch/vite-plugin-dynamic-base/issues/8))
+
 ### 0.4.1
 
 _2022-05-09_

@@ -10,7 +10,9 @@ export function replaceQuotes(mark: string, placeholder: string, code: string) {
   const singlePlaceholder = `${placeholder}+'/`
   const doubleMark = `"${mark}`
   const doublePlaceholder = `${placeholder}+"/`
-  return replace(doubleMark, doublePlaceholder, replace(singleMark, singlePlaceholder, code))
+  const templateMark = `\`${mark}`;
+  const templatePlaceholder = `\`\$\{${placeholder}\}/`;
+  return replace(doubleMark, doublePlaceholder, replace(singleMark, singlePlaceholder, replace(templateMark, templatePlaceholder, code)));
 }
 
 // replace asset url

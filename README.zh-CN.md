@@ -16,12 +16,13 @@ npm i vite-plugin-dynamic-base -D
 
 ## 变更日志
 
-### 0.4.1
+### 0.4.3
 
-_2022-05-09_
-#### Bug 修复
+_2022-06-21_
+#### Bug fixes
 
-- IE11 等浏览器下，兼容模式无法加载。
+- 修复字符串模板不工作.([#8](https://github.com/chenxch/vite-plugin-dynamic-base/issues/8))
+
 
 [变更日志](./CHANGELOG.zh-CN.md)
 

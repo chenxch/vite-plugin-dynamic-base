@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-dynamic-base",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Resolve all resource files dynamic publicPath, like Webpack's __webpack_public_path__",
   "main": "dist/index.js",
   "scripts": {
