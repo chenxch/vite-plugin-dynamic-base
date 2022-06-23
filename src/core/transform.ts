@@ -50,7 +50,7 @@ export function transformHtml(html: string, options: TransformOptions) {
   const { base, publicPath } = options
   const document = parse(html, { comment: true })
   const baseMarker = `${base}`
-  const assetsTags = document.querySelectorAll(`link[href^="${baseMarker}"],script[src^="${baseMarker}"]`)
+  const assetsTags = document.querySelectorAll(`head>link[href^="${baseMarker}"],head>script[src^="${baseMarker}"]`)
   const preloads = assetsTags.map(o => {
     const result = {
       parentTagName: o.parentNode.rawTagName,

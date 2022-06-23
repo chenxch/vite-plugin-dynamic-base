@@ -1,5 +1,12 @@
 ## Changelog
 
+### 0.4.4
+
+_2022-06-24_
+#### Feat
+
+- 支持 legacy modernPolyfills.([#9](https://github.com/chenxch/vite-plugin-dynamic-base/issues/9))
+
 ### 0.4.3
 
 _2022-06-21_

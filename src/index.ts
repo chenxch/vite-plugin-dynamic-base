@@ -1,4 +1,4 @@
-import type { Plugin, IndexHtmlTransformResult } from 'vite'
+import type { Plugin } from 'vite'
 import type { Options, TransformOptions } from '../index'
 import { transformChunk, transformAsset, transformLegacyHtml, transformHtml } from './core/transform'
 
@@ -46,21 +46,15 @@ export function dynamicBase(options?: Options): Plugin {
           } else if (chunk.type === 'asset' && typeof chunk.source === 'string') {
             if (!chunk.fileName.endsWith('.html')) {
               chunk.source = await transformAsset(chunk.source, baseOptions)
-            } else if (legacy && transformIndexHtml) {
-              chunk.source = await transformLegacyHtml(chunk.source, baseOptions)
+            } else if (transformIndexHtml) {
+              chunk.source = await transformHtml(chunk.source, baseOptions)
+              if(legacy){
+                chunk.source = await transformLegacyHtml(chunk.source, baseOptions)
+              }
             }
           }
         })
       )
-    },
-    transformIndexHtml: {
-      enforce: 'post',
-      transform(html): IndexHtmlTransformResult {
-        if (!transformIndexHtml) {
-          return html
-        }
-        return transformHtml(html, baseOptions)
-      }
     }
   }
 }

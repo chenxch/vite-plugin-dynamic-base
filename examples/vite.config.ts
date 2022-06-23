@@ -12,7 +12,8 @@ export default defineConfig({
   plugins: [
     legacy({
       targets: ['ie >= 11'],
-      additionalLegacyPolyfills: ['regenerator-runtime/runtime']
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
+      modernPolyfills: true,
     }),
     vue(),
     VitePWA({}),

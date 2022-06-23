@@ -18,12 +18,12 @@ npm i vite-plugin-dynamic-base -D
 
 ## Changelog
 
-### 0.4.3
+### 0.4.4
 
-_2022-06-21_
-#### Bug fixes
+_2022-06-24_
+#### Feat
 
-- template strings does not work.([#8](https://github.com/chenxch/vite-plugin-dynamic-base/issues/8))
+- support legacy modernPolyfills.([#9](https://github.com/chenxch/vite-plugin-dynamic-base/issues/9))
 
 
 [Changelogs](./CHANGELOG.md)
