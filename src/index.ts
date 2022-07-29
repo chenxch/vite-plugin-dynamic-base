@@ -14,7 +14,7 @@ export function dynamicBase(options?: Options): Plugin {
   let assetsDir = 'assets'
   let base = '/'
   let legacy = false
-  let baseOptions: TransformOptions = { assetsDir, base, legacy, publicPath, transformIndexHtml }
+  let baseOptions: TransformOptions = { assetsDir, base, legacy, publicPath: `(${publicPath} || '').replace(/\\/*$/, '')`, transformIndexHtml }
 
   return {
     name: 'vite-plugin-dynamic-base',
