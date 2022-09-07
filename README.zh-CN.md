@@ -16,12 +16,12 @@ npm i vite-plugin-dynamic-base -D
 
 ## 变更日志
 
-### 0.4.4
+### 0.4.5
 
-_2022-06-24_
-#### Feat
+_2022-09-07_
+#### Fix
 
-- 支持 legacy modernPolyfills.([#9](https://github.com/chenxch/vite-plugin-dynamic-base/issues/9))
+- 支持 异步加载组件.([#14](https://github.com/chenxch/vite-plugin-dynamic-base/issues/14))
 
 
 [变更日志](./CHANGELOG.zh-CN.md)

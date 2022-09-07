@@ -18,12 +18,12 @@ npm i vite-plugin-dynamic-base -D
 
 ## Changelog
 
-### 0.4.4
+### 0.4.5
 
-_2022-06-24_
-#### Feat
+_2022-09-07_
+#### Fix
 
-- support legacy modernPolyfills.([#9](https://github.com/chenxch/vite-plugin-dynamic-base/issues/9))
+- support aysnc load components.([#14](https://github.com/chenxch/vite-plugin-dynamic-base/issues/14))
 
 
 [Changelogs](./CHANGELOG.md)

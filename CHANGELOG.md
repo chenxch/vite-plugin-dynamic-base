@@ -1,5 +1,12 @@
 ## Changelog
 
+
+### 0.4.5
+
+_2022-09-07_
+#### Fix
+
+- support aysnc load components.([#14](https://github.com/chenxch/vite-plugin-dynamic-base/issues/14))
 ### 0.4.4
 
 _2022-06-24_

@@ -1,5 +1,12 @@
 ## Changelog
 
+### 0.4.5
+
+_2022-09-07_
+#### Fix
+
+- 支持 异步加载组件.([#14](https://github.com/chenxch/vite-plugin-dynamic-base/issues/14))
+
 ### 0.4.4
 
 _2022-06-24_
