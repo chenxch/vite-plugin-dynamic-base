@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-dynamic-base",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Resolve all resource files dynamic publicPath, like Webpack's __webpack_public_path__",
   "main": "dist/index.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "test": "vitest run",
     "coverage": "vitest run --coverage",
     "tdd": "vitest -w",
-    "snap": "vitest run --update"
+    "snap": "vitest run --update",
+    "release": "bumpp --commit --push --tag && pnpm publish"
   },
   "files": [
     "dist"
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/chenxch/vite-plugin-dynamic-base",
   "devDependencies": {
     "@types/node": "^16.11.27",
+    "bumpp": "^8.2.1",
     "c8": "^7.11.2",
     "typescript": "^4.6.3",
     "vite": "^2.9.5",
