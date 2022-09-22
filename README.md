@@ -2,9 +2,6 @@
 
 <!-- [![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-base?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-dynamic-base) -->
 
-<a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
-    <img src="https://img.shields.io/bundlephobia/minzip/vite-plugin-dynamic-base/latest" alt="Size" />
-  </a>
   <a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
     <img src="https://img.shields.io/npm/v/vite-plugin-dynamic-base" alt="Version" />
   </a>
