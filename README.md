@@ -1,7 +1,26 @@
 # vite-plugin-dynamic-base
 
-[![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-base?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-dynamic-base)
+<!-- [![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-base?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-dynamic-base) -->
 
+<a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
+    <img src="https://img.shields.io/bundlephobia/minzip/vite-plugin-dynamic-base/latest" alt="Size" />
+  </a>
+  <a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
+    <img src="https://img.shields.io/npm/v/vite-plugin-dynamic-base" alt="Version" />
+  </a>
+  <a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
+    <img src="https://img.shields.io/github/languages/top/chenxch/vite-plugin-dynamic-base" alt="Languages" />
+  </a>
+  <a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
+    <img src="https://img.shields.io/npm/l/vite-plugin-dynamic-base" alt="License" />
+  </a>
+  <a href="https://github.com/AttoJS/vite-plugin-dynamic-base/stargazers">
+    <img src="https://img.shields.io/github/stars/chenxch/vite-plugin-dynamic-base" alt="Star" />
+  </a>
+  <a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
+    <img src="https://img.shields.io/npm/dm/vite-plugin-dynamic-base" alt="Download" />
+  </a>
+  
 <p align='center'>
 <b>English</b> | <a href="https://github.com/chenxch/vite-plugin-dynamic-base/blob/main/README.zh-CN.md">简体中文</a>
 </p>
