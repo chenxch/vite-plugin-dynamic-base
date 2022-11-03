@@ -18,7 +18,11 @@ export function replaceQuotes(mark: string, placeholder: string, code: string) {
 // replace asset url
 export function replaceUrl(mark: string, placeholder: string, code: string) {
   const urlMark = `url\\(${mark}`
-  const urlPlaceholder = `url("+${placeholder}+"/`
+  let urlPlaceholder = `url("+${placeholder}+"/`
+  if(code.indexOf('innerHTML=') > -1) {
+    let ind = code.indexOf('innerHTML=')
+    if(code[ind + 10] === `'`) urlPlaceholder = `url('+${placeholder}+'/`;
+  }
   return replace(urlMark, urlPlaceholder, code)
 }
 
