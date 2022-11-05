@@ -17,9 +17,20 @@ export function replaceQuotes(mark: string, placeholder: string, code: string) {
 
 // replace asset url
 export function replaceUrl(mark: string, placeholder: string, code: string) {
-  const urlMark = `url\\(${mark}`
-  const urlPlaceholder = `url("+${placeholder}+"/`
-  return replace(urlMark, urlPlaceholder, code)
+  const urlMark = `url(${mark}`
+  // const urlPlaceholder = `url("+${placeholder}+"/`
+  const codeSpinner = code.split(urlMark)
+  if(codeSpinner.length === 1) {
+    return code
+  }
+  let rusultCode = ''
+  for(let i = 0; i < codeSpinner.length-1; i++) {
+    const codeItem = codeSpinner[i]
+    const codeItemNext = codeSpinner[i+1]
+    let quote =  Array.from(codeItem.matchAll(/'/g) || []).length % 2 === 1 ? "'" : '"'
+    rusultCode += codeItem + `url(${quote}+${placeholder}+${quote}/` + codeItemNext
+  }
+  return rusultCode
 }
 
 // replace asset src
