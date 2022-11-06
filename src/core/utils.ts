@@ -1,3 +1,4 @@
+import { xx } from './swc'
 // replace
 export function replace(mark: string, placeholder: string, code: string) {
   const re = new RegExp(mark, 'g')
@@ -17,19 +18,21 @@ export function replaceQuotes(mark: string, placeholder: string, code: string) {
 
 // replace asset url
 export function replaceUrl(mark: string, placeholder: string, code: string) {
-  const urlMark = `url(${mark}`
-  // const urlPlaceholder = `url("+${placeholder}+"/`
-  const codeSpinner = code.split(urlMark)
-  if(codeSpinner.length === 1) {
-    return code
-  }
-  let rusultCode = ''
-  for(let i = 0; i < codeSpinner.length-1; i++) {
-    const codeItem = codeSpinner[i]
-    const codeItemNext = codeSpinner[i+1]
-    let quote =  Array.from(codeItem.matchAll(/'/g) || []).length % 2 === 1 ? "'" : '"'
-    rusultCode += codeItem + `url(${quote}+${placeholder}+${quote}/` + codeItemNext
-  }
+  // const urlMark = `url(${mark}`
+  // // const urlPlaceholder = `url("+${placeholder}+"/`
+  // const codeSpinner = code.split(urlMark)
+  // if(codeSpinner.length === 1) {
+  //   return code
+  // }
+  // let rusultCode = ''
+  // for(let i = 0; i < codeSpinner.length-1; i++) {
+  //   const codeItem = codeSpinner[i]
+  //   const codeItemNext = codeSpinner[i+1]
+  //   let quote =  Array.from(codeItem.matchAll(/'/g) || []).length % 2 === 1 ? "'" : '"'
+  //   rusultCode += codeItem + `url(${quote}+${placeholder}+${quote}/` + codeItemNext
+  // }
+  const rusultCode = xx(code, mark, placeholder)
+  console.log(rusultCode)
   return rusultCode
 }
 
