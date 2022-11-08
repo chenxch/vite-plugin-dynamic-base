@@ -24,10 +24,10 @@ export function replaceUrl(mark: string, placeholder: string, code: string) {
     return code
   }
   let rusultCode = ''
+  let quote =  Array.from(codeSpinner[0].matchAll(/'/g) || []).length % 2 === 1 ? "'" : '"'
   for(let i = 0; i < codeSpinner.length-1; i++) {
     const codeItem = codeSpinner[i]
     const codeItemNext = codeSpinner[i+1]
-    let quote =  Array.from(codeItem.matchAll(/'/g) || []).length % 2 === 1 ? "'" : '"'
     rusultCode += codeItem + `url(${quote}+${placeholder}+${quote}/` + codeItemNext
   }
   return rusultCode
