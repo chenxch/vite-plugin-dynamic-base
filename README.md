@@ -34,12 +34,12 @@ npm i vite-plugin-dynamic-base -D
 
 ## Changelog
 
-### 0.4.5
+### 0.4.8
 
-_2022-09-07_
+_2022-01-15_
 #### Fix
 
-- support aysnc load components.([#14](https://github.com/chenxch/vite-plugin-dynamic-base/issues/14))
+- fix legacy assets path ([#19](https://github.com/chenxch/vite-plugin-dynamic-base/issues/19) by [@jgsrty](https://github.com/jgsrty))
 
 
 [Changelogs](./CHANGELOG.md)

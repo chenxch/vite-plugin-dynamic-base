@@ -16,12 +16,12 @@ npm i vite-plugin-dynamic-base -D
 
 ## 变更日志
 
-### 0.4.5
+### 0.4.8
 
-_2022-09-07_
+_2022-01-15_
 #### Fix
 
-- 支持 异步加载组件.([#14](https://github.com/chenxch/vite-plugin-dynamic-base/issues/14))
+- 修复 legacy 资源路径 ([#19](https://github.com/chenxch/vite-plugin-dynamic-base/issues/19) by [@jgsrty](https://github.com/jgsrty))
 
 
 [变更日志](./CHANGELOG.zh-CN.md)

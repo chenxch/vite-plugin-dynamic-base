@@ -1,5 +1,12 @@
 ## Changelog
 
+### 0.4.8
+
+_2022-01-15_
+#### Fix
+
+- 修复 legacy 资源路径 ([#19](https://github.com/chenxch/vite-plugin-dynamic-base/issues/19) by [@jgsrty](https://github.com/jgsrty))
+
 ### 0.4.5
 
 _2022-09-07_
