@@ -20,15 +20,19 @@ export function replaceUrl(mark: string, placeholder: string, code: string) {
   const urlMark = `url(${mark}`
   // const urlPlaceholder = `url("+${placeholder}+"/`
   const codeSpinner = code.split(urlMark)
-  if(codeSpinner.length === 1) {
+  const len = codeSpinner.length
+  if(len === 1) {
     return code
   }
   let rusultCode = ''
   let quote =  Array.from(codeSpinner[0].matchAll(/'/g) || []).length % 2 === 1 ? "'" : '"'
-  for(let i = 0; i < codeSpinner.length-1; i++) {
+  for(let i = 0; i < len; i++) {
     const codeItem = codeSpinner[i]
-    const codeItemNext = codeSpinner[i+1]
-    rusultCode += codeItem + `url(${quote}+${placeholder}+${quote}/` + codeItemNext
+    if(i === len - 1) {
+      rusultCode += codeItem
+    }else {
+      rusultCode += codeItem + `url(${quote}+${placeholder}+${quote}/`
+    }
   }
   return rusultCode
 }
