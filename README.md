@@ -34,12 +34,12 @@ npm i vite-plugin-dynamic-base -D
 
 ## Changelog
 
-### 0.4.8
+### 0.4.9
 
-_2022-01-15_
+_2023-04-11_
 #### Fix
 
-- fix legacy assets path ([#19](https://github.com/chenxch/vite-plugin-dynamic-base/issues/19) by [@jgsrty](https://github.com/jgsrty))
+- fix html template src parse ([#21](https://github.com/chenxch/vite-plugin-dynamic-base/issues/21))
 
 
 [Changelogs](./CHANGELOG.md)

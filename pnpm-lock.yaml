@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@swc/core': ^1.3.14
   '@types/node': ^16.11.27
   bumpp: ^8.2.1
   c8: ^7.11.2
@@ -11,7 +10,6 @@ specifiers:
   vitest: ^0.9.4
 
 dependencies:
-  '@swc/core': 1.3.14
   node-html-parser: registry.npmmirror.com/node-html-parser/5.3.3
 
 devDependencies:
@@ -20,7 +18,7 @@ devDependencies:
   c8: registry.npmmirror.com/c8/7.11.2
   typescript: registry.npmmirror.com/typescript/4.6.3
   vite: registry.npmmirror.com/vite/2.9.5
-  vitest: registry.npmmirror.com/vitest/0.9.4_c8@7.11.2
+  vitest: 0.9.4_c8@7.11.2
 
 packages:
 
@@ -54,114 +52,6 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
-
-  /@swc/core-darwin-arm64/1.3.14:
-    resolution: {integrity: sha512-QFuUq3341uOCrJMIWGuo+CmRC5qZoM2lUo7o2lmv1FO1Dh9njTG85pLD83vz6y4j/F034DBGzvRgSti/Bsoccw==}
-    engines: {node: '>=10'}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core-darwin-x64/1.3.14:
-    resolution: {integrity: sha512-fpAjbjXimJBmxCumRB8zjEtPc0lGUi9Uvu92XH6ww6AyXvg7KQmua5P2R9tnzAm6NwTCXKkgS86cgKysAbbObw==}
-    engines: {node: '>=10'}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core-linux-arm-gnueabihf/1.3.14:
-    resolution: {integrity: sha512-3XSFlgIyDPS+x2c0IFr0AGj4NUbrWGKbkkUCpmAURII0n3YoDsYw8Ux73I8MkWxTTwDGkou8qQOXyA28kAUM4w==}
-    engines: {node: '>=10'}
-    cpu: [arm]
-    os: [linux]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core-linux-arm64-gnu/1.3.14:
-    resolution: {integrity: sha512-r3fToDRYX76NEptAjvDg5aGrbitOgqooV37RpSTIGYd/CSNuin4cpCNFdca/Vh5lnNfal7mqdGDbG7gMruARtw==}
-    engines: {node: '>=10'}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core-linux-arm64-musl/1.3.14:
-    resolution: {integrity: sha512-IivEUC+3HNSsQNCfaCDzev2CpsvWpgFReitCmj0PKIdXFRsTi78jtJiraLWnYy956j4wwZbKN0OFGkS2ekKAVg==}
-    engines: {node: '>=10'}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core-linux-x64-gnu/1.3.14:
-    resolution: {integrity: sha512-HtwwA1Z0tE2z9fgaR5ehgY5ULbnVLHj3tayyWhIElF4EWsi6aQfCyn/oCZAcjoPKfEnJiSNBYt5gMmfK8l4mJA==}
-    engines: {node: '>=10'}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core-linux-x64-musl/1.3.14:
-    resolution: {integrity: sha512-RPXilkTD8IVgpou4TNuqZJOB7kMrVJ7sm7GgHF4v1eV3xdIyvy4w5FWjXZRdwMW6iunLgQEckuOmVx0I4mrdNg==}
-    engines: {node: '>=10'}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core-win32-arm64-msvc/1.3.14:
-    resolution: {integrity: sha512-H8Ka/ahJRs84hQCHC5ndORujbLBmi1mv+Z/m4CXpOaEX7TmeAo8nA17rrRckNvVkud9fghsKQGjkBQvJ0v7mRw==}
-    engines: {node: '>=10'}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core-win32-ia32-msvc/1.3.14:
-    resolution: {integrity: sha512-H3ZmDXrVxrqBzzCFodwYfcXfTHE0xGNLJlLGzJ4haV6RBM3ZYIvRzDtPivDzic/VQncmPj1WpLoEDfx/7KNC8Q==}
-    engines: {node: '>=10'}
-    cpu: [ia32]
-    os: [win32]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core-win32-x64-msvc/1.3.14:
-    resolution: {integrity: sha512-/D1lhWF/DQi2M7b6jWL35NmTY0mRJ5mwTXdmjqNNWOZ8h8TXQo1A3/FDFnfIIcRUeSNdF7IeB3xInT3BI34E1w==}
-    engines: {node: '>=10'}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: false
-    optional: true
-
-  /@swc/core/1.3.14:
-    resolution: {integrity: sha512-LpTTrXOGS7vnbR/rHrAux7GykUWbyVmI5NbICl9iF9yeqFdGm6JjaGBhbanmG8zrQL5aFx2kMxxb92V9D1KUiw==}
-    engines: {node: '>=10'}
-    hasBin: true
-    requiresBuild: true
-    optionalDependencies:
-      '@swc/core-darwin-arm64': 1.3.14
-      '@swc/core-darwin-x64': 1.3.14
-      '@swc/core-linux-arm-gnueabihf': 1.3.14
-      '@swc/core-linux-arm64-gnu': 1.3.14
-      '@swc/core-linux-arm64-musl': 1.3.14
-      '@swc/core-linux-x64-gnu': 1.3.14
-      '@swc/core-linux-x64-musl': 1.3.14
-      '@swc/core-win32-arm64-msvc': 1.3.14
-      '@swc/core-win32-ia32-msvc': 1.3.14
-      '@swc/core-win32-x64-msvc': 1.3.14
-    dev: false
 
   /braces/3.0.2:
     resolution: {integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==}
@@ -543,6 +433,39 @@ packages:
   /type-detect/4.0.8:
     resolution: {integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==}
     engines: {node: '>=4'}
+    dev: true
+
+  /vitest/0.9.4_c8@7.11.2:
+    resolution: {integrity: sha512-Em+EJb3keCr3GjyqnkxHuY7zMerEgLsN+m2nqsUcCzO7C4+Y0E7O7LXSNaODh3Gc/An3dqnoaAe/uLBrAJXUdQ==}
+    engines: {node: '>=v14.16.0'}
+    hasBin: true
+    peerDependencies:
+      '@vitest/ui': '*'
+      c8: '*'
+      happy-dom: '*'
+      jsdom: '*'
+    peerDependenciesMeta:
+      '@vitest/ui':
+        optional: true
+      c8:
+        optional: true
+      happy-dom:
+        optional: true
+      jsdom:
+        optional: true
+    dependencies:
+      '@types/chai': registry.npmmirror.com/@types/chai/4.3.1
+      '@types/chai-subset': registry.npmmirror.com/@types/chai-subset/1.3.3
+      c8: registry.npmmirror.com/c8/7.11.2
+      chai: registry.npmmirror.com/chai/4.3.6
+      local-pkg: registry.npmmirror.com/local-pkg/0.4.1
+      tinypool: registry.npmmirror.com/tinypool/0.1.2
+      tinyspy: registry.npmmirror.com/tinyspy/0.3.2
+      vite: registry.npmmirror.com/vite/2.9.5
+    transitivePeerDependencies:
+      - less
+      - sass
+      - stylus
     dev: true
 
   /which/2.0.2:
@@ -1348,42 +1271,6 @@ packages:
       rollup: registry.npmmirror.com/rollup/2.70.2
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
-
-  registry.npmmirror.com/vitest/0.9.4_c8@7.11.2:
-    resolution: {integrity: sha512-Em+EJb3keCr3GjyqnkxHuY7zMerEgLsN+m2nqsUcCzO7C4+Y0E7O7LXSNaODh3Gc/An3dqnoaAe/uLBrAJXUdQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vitest/-/vitest-0.9.4.tgz}
-    id: registry.npmmirror.com/vitest/0.9.4
-    name: vitest
-    version: 0.9.4
-    engines: {node: '>=v14.16.0'}
-    hasBin: true
-    peerDependencies:
-      '@vitest/ui': '*'
-      c8: '*'
-      happy-dom: '*'
-      jsdom: '*'
-    peerDependenciesMeta:
-      '@vitest/ui':
-        optional: true
-      c8:
-        optional: true
-      happy-dom:
-        optional: true
-      jsdom:
-        optional: true
-    dependencies:
-      '@types/chai': registry.npmmirror.com/@types/chai/4.3.1
-      '@types/chai-subset': registry.npmmirror.com/@types/chai-subset/1.3.3
-      c8: registry.npmmirror.com/c8/7.11.2
-      chai: registry.npmmirror.com/chai/4.3.6
-      local-pkg: registry.npmmirror.com/local-pkg/0.4.1
-      tinypool: registry.npmmirror.com/tinypool/0.1.2
-      tinyspy: registry.npmmirror.com/tinyspy/0.3.2
-      vite: registry.npmmirror.com/vite/2.9.5
-    transitivePeerDependencies:
-      - less
-      - sass
-      - stylus
     dev: true
 
   registry.npmmirror.com/which/2.0.2:

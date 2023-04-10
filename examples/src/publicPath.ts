@@ -1,1 +1,1 @@
-window.__dynamic_base__ = 'http://localhost:8090'
+window.__dynamic_base__ = 'http://localhost:4173'
