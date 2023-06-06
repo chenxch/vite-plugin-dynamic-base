@@ -18,30 +18,22 @@ export function replaceImport(placeholder: string, code: string) {
 export function replaceInStringLiteral(literal: StringLiteral, base: string, placeholder: string): string {
   const quoteMark = literal.raw.charAt(0);
   const regex = new RegExp(base, 'g');
-  // Keep track of whether we need to add quotation marks at the beginning/end of the
+  // Keep track of whether we need to add quotation marks at the beginning of the
   // final output
-  let withEndQuote = true;
   let withStartQuote = true;
 
-  const c = literal.value.replace(regex, (match, index, original) => {
+  const transformedStr = literal.value.replace(regex, (match, index) => {
     let prefix = `${quoteMark}+`;
-    let suffix = `+${quoteMark}`;
 
     if (index === 0) {
       prefix = '';
       withStartQuote = false;
     }
 
-    if (index + match.length === original.length) {
-      suffix = '';
-      withEndQuote = false;
-    }
-
-    return `${prefix}${placeholder}${suffix}/`;
+    return `${prefix}${placeholder}+${quoteMark}/`;
   });
 
   const prefix = withStartQuote ? quoteMark : '';
-  const suffix = withEndQuote ? quoteMark : '';
 
-  return `${prefix}${c}${suffix}`;
+  return `${prefix}${transformedStr}${quoteMark}`;
 }
