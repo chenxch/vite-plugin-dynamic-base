@@ -42,14 +42,14 @@ export function dynamicBase(options?: Options): Plugin {
       await Promise.all(
         Object.entries(bundle).map(async ([, chunk]) => {
           if (chunk.type === 'chunk' && chunk.code.indexOf(base) > -1) {
-            chunk.code = await transformChunk(format, chunk.code, baseOptions)
+            chunk.code = await transformChunk(chunk.code, baseOptions);
           } else if (chunk.type === 'asset' && typeof chunk.source === 'string') {
             if (!chunk.fileName.endsWith('.html')) {
-              chunk.source = await transformAsset(chunk.source, baseOptions)
+              chunk.source = transformAsset(chunk.source, baseOptions)
             } else if (transformIndexHtml) {
-              chunk.source = await transformHtml(chunk.source, baseOptions)
+              chunk.source = transformHtml(chunk.source, baseOptions)
               if(legacy){
-                chunk.source = await transformLegacyHtml(chunk.source, baseOptions)
+                chunk.source = transformLegacyHtml(chunk.source, baseOptions)
               }
             }
           }

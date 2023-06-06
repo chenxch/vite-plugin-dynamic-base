@@ -1,15 +1,33 @@
-import type { TransformOptions } from '../../index'
-import { parse } from 'node-html-parser'
-import { replaceQuotes, replaceUrl, replace, replaceSrc, replaceImport } from './utils'
+import type {TransformOptions} from '../../index'
+import {parse} from 'node-html-parser'
+import {replace, replaceImport, replaceInStringLiteral, replaceSrc} from './utils'
+import {StringAsBytes, collectMatchingStringLiterals, parseCode} from "./ast";
 
-export function transformChunk(format: 'system' | 'es', code: string, options: TransformOptions) {
+export async function transformChunk(codeStr: string, options: TransformOptions): Promise<string> {
   const { base, publicPath } = options
-  let content = replaceQuotes(base, publicPath, code)
-  if (format === 'system') {
-    // replace css url
-    content = replaceUrl(base, publicPath, content)
+  const [spanOffset, ast] = await parseCode(codeStr);
+
+  const stringLiterals = collectMatchingStringLiterals(base, ast);
+
+  if (stringLiterals.length === 0) {
+    return codeStr;
   }
-  return content
+
+  const code = new StringAsBytes(codeStr);
+
+  let lastIdx = 0;
+  let transformedCode = "";
+
+  for (const literal of stringLiterals) {
+    const prev = code.slice(lastIdx, literal.span.start - spanOffset);
+    const transformed = replaceInStringLiteral(literal, base, publicPath);
+
+    lastIdx = literal.span.end - spanOffset;
+    transformedCode += prev + transformed;
+  }
+  transformedCode += code.slice(lastIdx);
+
+  return transformedCode;
 }
 
 export function transformAsset(code: string, options: TransformOptions) {
