@@ -1,5 +1,13 @@
 ## Changelog
 
+### 1.0.0
+
+_2023-06-07_
+
+#### Feat
+
+- 使用swc进行标记转换 （[#23](https://github.com/chenxch/vite-plugin-dynamic-base/pull/23) by [@joarfish](https://github.com/joarfish)）
+
 ### 0.4.9
 
 _2023-04-11_

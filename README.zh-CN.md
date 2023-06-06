@@ -1,6 +1,23 @@
 # vite-plugin-dynamic-base
 
-[![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-base?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-dynamic-base)
+<!-- [![NPM version](https://img.shields.io/npm/v/vite-plugin-dynamic-base?color=a1b858&label=)](https://www.npmjs.com/package/vite-plugin-dynamic-base) -->
+
+  <a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
+    <img src="https://img.shields.io/npm/v/vite-plugin-dynamic-base" alt="Version" />
+  </a>
+  <a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
+    <img src="https://img.shields.io/github/languages/top/chenxch/vite-plugin-dynamic-base" alt="Languages" />
+  </a>
+  <a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
+    <img src="https://img.shields.io/npm/l/vite-plugin-dynamic-base" alt="License" />
+  </a>
+  <a href="https://github.com/AttoJS/vite-plugin-dynamic-base/stargazers">
+    <img src="https://img.shields.io/github/stars/chenxch/vite-plugin-dynamic-base" alt="Star" />
+  </a>
+  <a href="https://www.npmjs.com/package/vite-plugin-dynamic-base">
+    <img src="https://img.shields.io/npm/dm/vite-plugin-dynamic-base" alt="Download" />
+  </a>
+  
 
 <p align='center'>
 <a href="https://github.com/chenxch/vite-plugin-dynamic-base/blob/main/README.md">English</a> | <b>简体中文</b>
@@ -16,12 +33,13 @@ npm i vite-plugin-dynamic-base -D
 
 ## 变更日志
 
-### 0.4.9
+### 1.0.0
 
-_2023-04-11_
-#### Fix
+_2023-06-07_
 
-- 修复html模版src解析 ([#21](https://github.com/chenxch/vite-plugin-dynamic-base/issues/21))
+#### Feat
+
+- 使用swc进行标记转换 （[#23](https://github.com/chenxch/vite-plugin-dynamic-base/pull/23) by [@joarfish](https://github.com/joarfish)）
 
 
 [变更日志](./CHANGELOG.zh-CN.md)
@@ -65,6 +83,3 @@ dynamicBase({
 })
 ```
 
-## 计划
-
-1. 探索利用SWC改造AST进行加工的可行性

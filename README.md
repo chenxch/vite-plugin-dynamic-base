@@ -34,12 +34,13 @@ npm i vite-plugin-dynamic-base -D
 
 ## Changelog
 
-### 0.4.9
+### 1.0.0
 
-_2023-04-11_
-#### Fix
+_2023-06-07_
 
-- fix html template src parse ([#21](https://github.com/chenxch/vite-plugin-dynamic-base/issues/21))
+#### Feat
+
+- Using SWC for token transformation （[#23](https://github.com/chenxch/vite-plugin-dynamic-base/pull/23) by [@joarfish](https://github.com/joarfish)）
 
 
 [Changelogs](./CHANGELOG.md)
@@ -83,6 +84,3 @@ dynamicBase({
 })
 ```
 
-## Plan
-
-1. Exploring the feasibility of using SWC to transform the AST for processing
