@@ -1,15 +1,15 @@
 import type {TransformOptions} from '../../index'
 import {parse} from 'node-html-parser'
-import {replace, replaceImport, replaceInStringLiteral, replaceSrc} from './utils'
-import {StringAsBytes, collectMatchingStringLiterals, parseCode} from "./ast";
+import {replace, replaceImport, replaceInStringLiteral, replaceInTemplateElement, replaceSrc} from './utils'
+import {StringAsBytes, collectMatchingStrings, parseCode} from "./ast";
 
 export async function transformChunk(codeStr: string, options: TransformOptions): Promise<string> {
   const { base, publicPath } = options
   const [spanOffset, ast] = await parseCode(codeStr);
 
-  const stringLiterals = collectMatchingStringLiterals(base, ast);
+  const strings = collectMatchingStrings(base, ast);
 
-  if (stringLiterals.length === 0) {
+  if (strings.length === 0) {
     return codeStr;
   }
 
@@ -18,11 +18,17 @@ export async function transformChunk(codeStr: string, options: TransformOptions)
   let lastIdx = 0;
   let transformedCode = "";
 
-  for (const literal of stringLiterals) {
-    const prev = code.slice(lastIdx, literal.span.start - spanOffset);
-    const transformed = replaceInStringLiteral(literal, base, publicPath);
+  for (const str of strings) {
+    const prev = code.slice(lastIdx, str.span.start - spanOffset);
 
-    lastIdx = literal.span.end - spanOffset;
+    let transformed: string;
+    if (str.type === 'TemplateElement') {
+      transformed = replaceInTemplateElement(str, base, publicPath);
+    } else if (str.type === 'StringLiteral') {
+      transformed = replaceInStringLiteral(str, base, publicPath);
+    }
+
+    lastIdx = str.span.end - spanOffset;
     transformedCode += prev + transformed;
   }
   transformedCode += code.slice(lastIdx);

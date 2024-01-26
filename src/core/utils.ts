@@ -1,5 +1,5 @@
 // replace
-import {StringLiteral} from "@swc/core";
+import {StringLiteral, TemplateElement} from "@swc/core";
 
 export function replace(mark: string, placeholder: string, code: string) {
   const re = new RegExp(mark, 'g')
@@ -36,4 +36,9 @@ export function replaceInStringLiteral(literal: StringLiteral, base: string, pla
   const prefix = withStartQuote ? quoteMark : '';
 
   return `${prefix}${transformedStr}${quoteMark}`;
+}
+
+export function replaceInTemplateElement(element: TemplateElement, base: string, placeholder: string): string {
+  const regex = new RegExp(base, 'g');
+  return element.raw.replace(regex, () => '/${' + placeholder + '}/');
 }
