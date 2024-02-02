@@ -1,5 +1,22 @@
 ## Changelog
 
+### 1.0.2
+
+_2024-02-02_
+
+#### Fix
+
+- 修复由于错误的字符串/模板顺序而导致的失败转换。
+
+### 1.0.1
+
+_2024-02-02_
+
+#### Feat
+
+- 添加对模板文字替换的支持 ([#28](https://github.com/chenxch/vite-plugin-dynamic-base/pull/28) by [@joarfish](https://github.com/joarfish))
+  
+
 ### 1.0.0
 
 _2023-06-07_

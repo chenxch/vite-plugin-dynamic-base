@@ -1,10 +1,20 @@
 ## Changelog
 
+### 1.0.2
+
+_2024-02-02_
+
+#### Fix
+
+- Fix failing transformations due to wrong string / template order.
+
 ### 1.0.1
+
+_2024-02-02_
 
 #### Feat
 
-- 添加对模板文字替换的支持 ([#28](https://github.com/chenxch/vite-plugin-dynamic-base/pull/28) by [@joarfish](https://github.com/joarfish))
+- Add support for replacement in template literals. ([#28](https://github.com/chenxch/vite-plugin-dynamic-base/pull/28) by [@joarfish](https://github.com/joarfish))
 
 
 ### 1.0.0
