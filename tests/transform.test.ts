@@ -51,4 +51,10 @@ describe('transform', () => {
     const result = await transformChunk(code, options);
     expect(result).toEqual("var reportError=function(e){return `Couldn't find /${window.__dynamic_base__}/assets/${filename1} or /${window.__dynamic_base__}/assets/${filename2}`;}");
   })
+
+  test('transformChunk-mixed-strings-and-templates', async () => {
+    const code = "const someString = \"Hello World!\"; const someTemplate = \`${Math.random()} is a random number.\`; const myPath = `/${someVar}/__dynamic_base__/image.png`; const strPath = '/assets/__dynamic_base__/image2.png';";
+    const result = await transformChunk(code, options);
+    expect(result).toEqual("const someString = \"Hello World!\"; const someTemplate = \`${Math.random()} is a random number.\`; const myPath = `/${someVar}/${window.__dynamic_base__}/image.png`; const strPath = '/assets'+window.__dynamic_base__+'/image2.png';")
+  })
 })

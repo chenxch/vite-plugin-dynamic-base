@@ -6,9 +6,7 @@ import Visitor from "@swc/core/Visitor";
  * needle in their value.
  */
 export class StringCollector extends Visitor {
-
-    public baseStringLiterals: StringLiteral[] = [];
-    public baseTemplateElements: TemplateElement[] = [];
+    public matchingStrings: (StringLiteral|TemplateElement)[] = [];
     private readonly needle: string;
 
     constructor(needle: string) {
@@ -17,9 +15,8 @@ export class StringCollector extends Visitor {
     }
 
     visitStringLiteral(n: StringLiteral): StringLiteral {
-
         if (n.value.indexOf(this.needle) !== -1) {
-            this.baseStringLiterals.push(n);
+            this.matchingStrings.push(n);
         }
 
         return super.visitStringLiteral(n);
@@ -27,8 +24,8 @@ export class StringCollector extends Visitor {
 
     visitTemplateLiteral(n: TemplateLiteral): Expression {
         for(const q of n.quasis) {
-            if (q.raw.indexOf(this.needle) !== 1) {
-                this.baseTemplateElements.push(q);
+            if (q.raw.indexOf(this.needle) !== -1) {
+                this.matchingStrings.push(q);
             }
         }
 
@@ -79,5 +76,5 @@ export function collectMatchingStrings(needle: string, ast: ModuleItem[]): (Stri
     const visitor = new StringCollector(needle);
     visitor.visitModuleItems(ast);
 
-    return [ ...visitor.baseStringLiterals, ...visitor.baseTemplateElements ];
+    return visitor.matchingStrings;
 }
