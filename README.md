@@ -34,15 +34,6 @@ npm i vite-plugin-dynamic-base -D
 
 ## Changelog
 
-### 1.0.0
-
-_2023-06-07_
-
-#### Feat
-
-- Using SWC for token transformation （[#23](https://github.com/chenxch/vite-plugin-dynamic-base/pull/23) by [@joarfish](https://github.com/joarfish)）
-
-
 [Changelogs](./CHANGELOG.md)
 
 

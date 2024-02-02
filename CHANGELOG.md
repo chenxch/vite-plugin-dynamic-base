@@ -1,5 +1,11 @@
 ## Changelog
 
+### 1.0.1
+
+#### Feat
+
+- 添加对模板文字替换的支持 ([#28](https://github.com/chenxch/vite-plugin-dynamic-base/pull/28) by [@joarfish](https://github.com/joarfish))
+
 
 ### 1.0.0
 

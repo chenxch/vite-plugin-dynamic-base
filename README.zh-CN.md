@@ -33,15 +33,6 @@ npm i vite-plugin-dynamic-base -D
 
 ## 变更日志
 
-### 1.0.0
-
-_2023-06-07_
-
-#### Feat
-
-- 使用swc进行标记转换 （[#23](https://github.com/chenxch/vite-plugin-dynamic-base/pull/23) by [@joarfish](https://github.com/joarfish)）
-
-
 [变更日志](./CHANGELOG.zh-CN.md)
 
 ## 编译模式
