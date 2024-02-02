@@ -39,4 +39,16 @@ describe('transform', () => {
     const result = await transformChunk(code, options);
     expect(result).toEqual(`var reportError=function(e){return "Couldn't find "+window.__dynamic_base__+"/assets/some.file or "+window.__dynamic_base__+"/assets/some_other.file";}`);
   })
+
+  test('transformChunk-template-literal', async () => {
+    const code = 'var foo=function(part1,part2){return \`${part1}/__dynamic_base__/test/${part2}\`;}';
+    const result = await transformChunk(code, options);
+    expect(result).toEqual('var foo=function(part1,part2){return \`$\{part1}/${window.__dynamic_base__}/test/${part2}\`;}');
+  })
+
+  test('transformChunk-template-literal-with-multiple-elements', async () => {
+    const code = "var reportError=function(e){return \`Couldn't find /__dynamic_base__/assets/${filename1} or /__dynamic_base__/assets/${filename2}\`;}";
+    const result = await transformChunk(code, options);
+    expect(result).toEqual("var reportError=function(e){return `Couldn't find /${window.__dynamic_base__}/assets/${filename1} or /${window.__dynamic_base__}/assets/${filename2}`;}");
+  })
 })

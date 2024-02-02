@@ -1,13 +1,14 @@
-import {ModuleItem, parse, StringLiteral} from "@swc/core";
+import {Expression, ModuleItem, parse, StringLiteral, TemplateElement, TemplateLiteral} from "@swc/core";
 import Visitor from "@swc/core/Visitor";
 
 /**
- * Traverses an AST (or parts of it) to collect all StringLiterals that contain
+ * Traverses an AST (or parts of it) to collect all StringLiterals and TemplateElements that contain
  * needle in their value.
  */
-export class StringLiteralCollector extends Visitor {
+export class StringCollector extends Visitor {
 
     public baseStringLiterals: StringLiteral[] = [];
+    public baseTemplateElements: TemplateElement[] = [];
     private readonly needle: string;
 
     constructor(needle: string) {
@@ -22,6 +23,16 @@ export class StringLiteralCollector extends Visitor {
         }
 
         return super.visitStringLiteral(n);
+    }
+
+    visitTemplateLiteral(n: TemplateLiteral): Expression {
+        for(const q of n.quasis) {
+            if (q.raw.indexOf(this.needle) !== 1) {
+                this.baseTemplateElements.push(q);
+            }
+        }
+
+        return super.visitTemplateLiteral(n);
     }
 }
 
@@ -60,13 +71,13 @@ export async function parseCode(code: string): Promise<[number, ModuleItem[]]> {
 }
 
 /**
- * Returns an array of StringLiterals from an AST that contain needle in their value.
+ * Returns an array of StringLiterals and TemplateElements from an AST that contain needle in their value.
  * @param needle
  * @param ast
  */
-export function collectMatchingStringLiterals(needle: string, ast: ModuleItem[]): StringLiteral[] {
-    const visitor = new StringLiteralCollector(needle);
+export function collectMatchingStrings(needle: string, ast: ModuleItem[]): (StringLiteral|TemplateElement)[] {
+    const visitor = new StringCollector(needle);
     visitor.visitModuleItems(ast);
 
-    return visitor.baseStringLiterals;
+    return [ ...visitor.baseStringLiterals, ...visitor.baseTemplateElements ];
 }
