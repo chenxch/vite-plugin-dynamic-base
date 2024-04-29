@@ -1,5 +1,13 @@
 ## Changelog
 
+### 1.0.3
+
+_2024-04-29_
+
+#### Chore
+
+- add peerDependencies.
+
 ### 1.0.2
 
 _2024-02-02_
