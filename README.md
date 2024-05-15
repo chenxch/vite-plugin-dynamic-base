@@ -72,7 +72,7 @@ dynamicBase({
   publicPath: 'window.__dynamic_base__',
   // dynamic load resources on index.html, default false. maybe change default true
   transformIndexHtml:  false
-  // provide conversion configuration parameters
+  // provide conversion configuration parameters. by 1.1.0
   // transformIndexHtmlConfig: { insertBodyAfter: false }
 })
 ```

@@ -1,5 +1,14 @@
 ## Changelog
 
+### 1.1.0
+
+_2024-05-15_
+
+#### Chore
+
+- support defer load script.
+
+
 ### 1.0.3
 
 _2024-04-29_
