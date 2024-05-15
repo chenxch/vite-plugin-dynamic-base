@@ -1,4 +1,4 @@
-import type {TransformOptions} from '../../index'
+import type {TransformOptions, TransformIndexHtmlConfig} from '../../index'
 import {parse} from 'node-html-parser'
 import {replace, replaceImport, replaceInStringLiteral, replaceInTemplateElement, replaceSrc} from './utils'
 import {StringAsBytes, collectMatchingStrings, parseCode} from "./ast";
@@ -70,7 +70,7 @@ export function transformLegacyHtml(code: string, options: TransformOptions) {
   return content
 }
 
-export function transformHtml(html: string, options: TransformOptions) {
+export function transformHtml(html: string, options: TransformOptions,transformIndexHtmlConfig: TransformIndexHtmlConfig) {
   const { base, publicPath } = options
   const document = parse(html, { comment: true })
   const baseMarker = `${base}`
@@ -88,6 +88,7 @@ export function transformHtml(html: string, options: TransformOptions) {
     o.parentNode.removeChild(o)
     return result
   })
+  const endTag = transformIndexHtmlConfig?.insertBodyAfter ? '</body>' : '</head>'
   const injectCode = `  <script>
 (function(){
 var preloads = ${JSON.stringify(preloads)};
@@ -112,6 +113,9 @@ document.getElementsByTagName(item.parentTagName)[0].appendChild(childNode);
 }
 })();
 </script>
-</head>`
-  return document.outerHTML.replace('</head>', injectCode)
+${endTag}
+`
+
+
+  return document.outerHTML.replace(endTag, injectCode)
 }

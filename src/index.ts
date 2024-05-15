@@ -5,10 +5,11 @@ import { transformChunk, transformAsset, transformLegacyHtml, transformHtml } fr
 export function dynamicBase(options?: Options): Plugin {
   const defaultOptions: Options = {
     publicPath: 'window.__dynamic_base__',
-    transformIndexHtml: false // maybe default true
+    transformIndexHtml: false, // maybe default true
+    transformIndexHtmlConfig: {}
   }
 
-  const { publicPath, transformIndexHtml } = { ...defaultOptions, ...(options || {}) }
+  const { publicPath, transformIndexHtml, transformIndexHtmlConfig } = { ...defaultOptions, ...(options || {}) }
 
   // const preloadHelperId = 'vite/preload-helper'
   let assetsDir = 'assets'
@@ -47,7 +48,7 @@ export function dynamicBase(options?: Options): Plugin {
             if (!chunk.fileName.endsWith('.html')) {
               chunk.source = transformAsset(chunk.source, baseOptions)
             } else if (transformIndexHtml) {
-              chunk.source = transformHtml(chunk.source, baseOptions)
+              chunk.source = transformHtml(chunk.source, baseOptions, transformIndexHtmlConfig)
               if(legacy){
                 chunk.source = transformLegacyHtml(chunk.source, baseOptions)
               }
