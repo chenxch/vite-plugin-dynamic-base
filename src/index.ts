@@ -1,5 +1,5 @@
 import type { Plugin } from 'vite'
-import type { Options, TransformOptions } from '../index'
+import type { Options, TransformOptions } from './types'
 import { transformChunk, transformAsset, transformLegacyHtml, transformHtml } from './core/transform'
 
 export function dynamicBase(options?: Options): Plugin {

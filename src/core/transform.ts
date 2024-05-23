@@ -1,4 +1,4 @@
-import type {TransformOptions, TransformIndexHtmlConfig} from '../../index'
+import type {TransformOptions, TransformIndexHtmlConfig} from '../types'
 import {parse} from 'node-html-parser'
 import {replace, replaceImport, replaceInStringLiteral, replaceInTemplateElement, replaceSrc} from './utils'
 import {StringAsBytes, collectMatchingStrings, parseCode} from "./ast";
