@@ -1,5 +1,6 @@
 export interface Options {
   publicPath?: string,
+  removeStartingSlash?: boolean,
   transformIndexHtml?: boolean
   transformIndexHtmlConfig?: TransformIndexHtmlConfig
 }

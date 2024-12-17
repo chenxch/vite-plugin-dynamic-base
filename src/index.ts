@@ -6,17 +6,18 @@ export function dynamicBase(options?: Options): Plugin {
   const defaultOptions: Options = {
     publicPath: 'window.__dynamic_base__',
     transformIndexHtml: false, // maybe default true
-    transformIndexHtmlConfig: {}
+    transformIndexHtmlConfig: {},
+    removeStartingSlash: false
   }
 
-  const { publicPath, transformIndexHtml, transformIndexHtmlConfig } = { ...defaultOptions, ...(options || {}) }
+  const { publicPath, transformIndexHtml, transformIndexHtmlConfig, removeStartingSlash } = { ...defaultOptions, ...(options || {}) }
 
   // const preloadHelperId = 'vite/preload-helper'
   let assetsDir = 'assets'
   let base = '/'
   let legacy = false
-  let baseOptions: TransformOptions = { assetsDir, base, legacy, publicPath: ` ${publicPath}`, transformIndexHtml }
-
+  let baseOptions: TransformOptions = { assetsDir, base, legacy, publicPath: ` ${publicPath}`, transformIndexHtml, removeStartingSlash }
+  
   return {
     name: 'vite-plugin-dynamic-base',
     enforce: 'post',

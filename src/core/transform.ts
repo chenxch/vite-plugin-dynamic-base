@@ -4,7 +4,7 @@ import {replace, replaceImport, replaceInStringLiteral, replaceInTemplateElement
 import {StringAsBytes, collectMatchingStrings, parseCode} from "./ast";
 
 export async function transformChunk(codeStr: string, options: TransformOptions): Promise<string> {
-  const { base, publicPath } = options
+  const { base, publicPath, removeStartingSlash } = options
   const [spanOffset, ast] = await parseCode(codeStr);
 
   const strings = collectMatchingStrings(base, ast);
@@ -23,9 +23,9 @@ export async function transformChunk(codeStr: string, options: TransformOptions)
 
     let transformed: string;
     if (str.type === 'TemplateElement') {
-      transformed = replaceInTemplateElement(str, base, publicPath);
+      transformed = replaceInTemplateElement(str, base, publicPath, removeStartingSlash);
     } else if (str.type === 'StringLiteral') {
-      transformed = replaceInStringLiteral(str, base, publicPath);
+      transformed = replaceInStringLiteral(str, base, publicPath, removeStartingSlash);
     }
 
     lastIdx = str.span.end - spanOffset;
@@ -44,16 +44,20 @@ export function transformAsset(code: string, options: TransformOptions) {
 }
 
 export function transformLegacyHtml(code: string, options: TransformOptions) {
-  const { base, publicPath } = options
+  const { base, publicPath, removeStartingSlash } = options
   let content = replaceSrc(publicPath, code)
   content = replace(base, '/', content)
   content = replaceImport(publicPath, content)
   const document = parse(content, { comment: true })
   const legacyPolyfill = document.getElementById('vite-legacy-polyfill')
-  const legacyPolyfillSrc = legacyPolyfill?.getAttribute('src')
+  let legacyPolyfillSrc = legacyPolyfill?.getAttribute('src')
 
   const legacyEntry = document.getElementById('vite-legacy-entry')
-  const legacyEntrySrc = legacyEntry?.getAttribute('data-src')
+  let legacyEntrySrc = legacyEntry?.getAttribute('data-src')
+  if (removeStartingSlash) {
+    legacyPolyfillSrc = legacyPolyfillSrc?.replace(/^\//, '')
+    legacyEntrySrc = legacyEntrySrc?.replace(/^\//, '')
+  }
 
   if (legacyPolyfill) {
     legacyPolyfill.setAttribute('data-src', legacyPolyfillSrc)
@@ -78,6 +82,7 @@ export function transformHtml(html: string, options: TransformOptions,transformI
   const { base, publicPath } = options
   const document = parse(html, { comment: true })
   const baseMarker = `${base}`
+  const replaceMarker = options.removeStartingSlash ? '' : '/'
   const assetsTags = document.querySelectorAll(`head>link[href^="${baseMarker}"],head>script[src^="${baseMarker}"]`)
   const preloads = assetsTags.map(o => {
     const result = {
@@ -86,7 +91,7 @@ export function transformHtml(html: string, options: TransformOptions,transformI
       attrs: Object.assign(
         {},
         o.attrs,
-        o.attrs.src ? { src: o.attrs.src.replace(baseMarker, '/') } : { href: o.attrs.href.replace(baseMarker, '/') }
+        o.attrs.src ? { src: o.attrs.src.replace(baseMarker, replaceMarker) } : { href: o.attrs.href.replace(baseMarker, replaceMarker) }
       )
     }
     o.parentNode.removeChild(o)
