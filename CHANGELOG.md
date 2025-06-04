@@ -1,5 +1,13 @@
 ## Changelog
 
+### 1.1.2
+
+_2025-06-04_
+
+#### Fix
+
+- update asset tag selector to include all relevant tags in transformHtml function. Change from head to global.
+
 ### 1.1.0
 
 _2024-05-15_
