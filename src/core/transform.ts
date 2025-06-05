@@ -72,6 +72,8 @@ export function transformLegacyHtml(code: string, options: TransformOptions) {
 
 export function transformHtml(html: string, options: TransformOptions,transformIndexHtmlConfig: TransformIndexHtmlConfig) {
   const { base, publicPath } = options
+  const { publicPath: htmlPublicPath, insertBodyAfter } = transformIndexHtmlConfig || {}
+  const targetPath = htmlPublicPath || publicPath
   const document = parse(html, { comment: true })
   const baseMarker = `${base}`
   const assetsTags = document.querySelectorAll(`link[href^="${baseMarker}"],script[src^="${baseMarker}"]`)
@@ -88,7 +90,7 @@ export function transformHtml(html: string, options: TransformOptions,transformI
     o.parentNode.removeChild(o)
     return result
   })
-  const endTag = transformIndexHtmlConfig?.insertBodyAfter ? '</body>' : '</head>'
+  const endTag = insertBodyAfter ? '</body>' : '</head>'
   const injectCode = `  <script>
 (function(){
 var preloads = ${JSON.stringify(preloads)};
@@ -102,11 +104,11 @@ for(var i = 0; i < preloads.length; i++){
 var item = preloads[i]
 var childNode = document.createElement(item.tagName);
 setAttribute(childNode, item.attrs)
-if(${publicPath}) {
+if(${targetPath}) {
   if(item.tagName == 'link') {
-    setAttribute(childNode, { href: ${publicPath} + item.attrs.href })
+    setAttribute(childNode, { href: ${targetPath} + item.attrs.href })
   } else if (item.tagName == 'script') {
-    setAttribute(childNode, { src: ${publicPath} + item.attrs.src })
+    setAttribute(childNode, { src: ${targetPath} + item.attrs.src })
   }
 }
 document.getElementsByTagName(item.parentTagName)[0].appendChild(childNode);

@@ -1,5 +1,13 @@
 ## Changelog
 
+### 1.2.0
+
+_2025-06-05_
+
+#### Feat
+
+- transform HTML to support custom publicPath.
+
 ### 1.1.2
 
 _2025-06-04_

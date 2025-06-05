@@ -6,6 +6,7 @@ export interface Options {
 
 export interface TransformIndexHtmlConfig {
   insertBodyAfter?: boolean,
+  publicPath?: string
 }
 
 export interface TransformOptions extends Options {
