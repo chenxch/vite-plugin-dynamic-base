@@ -1,5 +1,16 @@
 ## Changelog
 
+### 1.3.0
+
+_2026-02-07_
+
+#### Feat
+
+- 优化 HTML 转换逻辑，当 `insertBodyAfter` 为 false 时，根据 `parentTagName` 对资源进行分组，在各自的父标签（head/body）位置插入脚本。
+
+#### Refactor
+
+- 提取 `generateInjectCode` 函数以消除重复代码，提高可维护性。
 
 ### 1.2.0
 

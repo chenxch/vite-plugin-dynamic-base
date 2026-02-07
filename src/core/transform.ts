@@ -70,6 +70,35 @@ export function transformLegacyHtml(code: string, options: TransformOptions) {
   return content
 }
 
+function generateInjectCode(preloads: any[], targetPath: string, parentTagSelector: string, endTag: string) {
+  return `  <script>
+(function(){
+var preloads = ${JSON.stringify(preloads)};
+function setAttribute(target, attrs) {
+for (var key in attrs) {
+  target.setAttribute(key, attrs[key]);
+}
+return target;
+};
+for(var i = 0; i < preloads.length; i++){
+var item = preloads[i]
+var childNode = document.createElement(item.tagName);
+setAttribute(childNode, item.attrs)
+if(${targetPath}) {
+  if(item.tagName == 'link') {
+    setAttribute(childNode, { href: ${targetPath} + item.attrs.href })
+  } else if (item.tagName == 'script') {
+    setAttribute(childNode, { src: ${targetPath} + item.attrs.src })
+  }
+}
+document.getElementsByTagName(${parentTagSelector})[0].appendChild(childNode);
+}
+})();
+</script>
+${endTag}
+`
+}
+
 export function transformHtml(html: string, options: TransformOptions,transformIndexHtmlConfig: TransformIndexHtmlConfig) {
   const { base, publicPath } = options
   const { publicPath: htmlPublicPath, insertBodyAfter } = transformIndexHtmlConfig || {}
@@ -90,34 +119,36 @@ export function transformHtml(html: string, options: TransformOptions,transformI
     o.parentNode.removeChild(o)
     return result
   })
-  const endTag = insertBodyAfter ? '</body>' : '</head>'
-  const injectCode = `  <script>
-(function(){
-var preloads = ${JSON.stringify(preloads)};
-function setAttribute(target, attrs) {
-for (var key in attrs) {
-  target.setAttribute(key, attrs[key]);
-}
-return target;
-};
-for(var i = 0; i < preloads.length; i++){
-var item = preloads[i]
-var childNode = document.createElement(item.tagName);
-setAttribute(childNode, item.attrs)
-if(${targetPath}) {
-  if(item.tagName == 'link') {
-    setAttribute(childNode, { href: ${targetPath} + item.attrs.href })
-  } else if (item.tagName == 'script') {
-    setAttribute(childNode, { src: ${targetPath} + item.attrs.src })
+
+  let content = document.outerHTML
+
+  if (insertBodyAfter) {
+    // 原逻辑：所有资源插入到 body 后
+    const endTag = '</body>'
+    const injectCode = generateInjectCode(preloads, targetPath, 'item.parentTagName', endTag)
+    content = content.replace(endTag, injectCode)
+  } else {
+    // 新逻辑：根据 parentTagName 分组，在对应位置插入
+    const groupedPreloads: Record<string, typeof preloads> = {}
+    preloads.forEach(item => {
+      const parent = item.parentTagName
+      if (!groupedPreloads[parent]) {
+        groupedPreloads[parent] = []
+      }
+      groupedPreloads[parent].push(item)
+    })
+
+    // 按照 head -> body 的顺序处理
+    const parentTags = ['head', 'body']
+    for (const parentTag of parentTags) {
+      const items = groupedPreloads[parentTag]
+      if (!items || items.length === 0) continue
+
+      const endTag = `</${parentTag}>`
+      const injectCode = generateInjectCode(items, targetPath, `'${parentTag}'`, endTag)
+      content = content.replace(endTag, injectCode)
+    }
   }
-}
-document.getElementsByTagName(item.parentTagName)[0].appendChild(childNode);
-}
-})();
-</script>
-${endTag}
-`
 
-
-  return document.outerHTML.replace(endTag, injectCode)
+  return content
 }

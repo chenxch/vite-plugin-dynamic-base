@@ -1,5 +1,17 @@
 ## Changelog
 
+### 1.3.0
+
+_2026-02-07_
+
+#### Feat
+
+- optimize HTML transformation to group preloads by parentTagName when `insertBodyAfter` is false, inserting scripts in their respective parent tags (head/body).
+
+#### Refactor
+
+- extract `generateInjectCode` function to reduce code duplication and improve maintainability.
+
 ### 1.2.0
 
 _2025-06-05_
