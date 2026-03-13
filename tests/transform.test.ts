@@ -43,18 +43,24 @@ describe('transform', () => {
   test('transformChunk-template-literal', async () => {
     const code = 'var foo=function(part1,part2){return \`${part1}/__dynamic_base__/test/${part2}\`;}';
     const result = await transformChunk(code, options);
-    expect(result).toEqual('var foo=function(part1,part2){return \`$\{part1}/${window.__dynamic_base__}/test/${part2}\`;}');
+    expect(result).toEqual('var foo=function(part1,part2){return \`$\{part1}${window.__dynamic_base__}/test/${part2}\`;}');
   })
 
   test('transformChunk-template-literal-with-multiple-elements', async () => {
     const code = "var reportError=function(e){return \`Couldn't find /__dynamic_base__/assets/${filename1} or /__dynamic_base__/assets/${filename2}\`;}";
     const result = await transformChunk(code, options);
-    expect(result).toEqual("var reportError=function(e){return `Couldn't find /${window.__dynamic_base__}/assets/${filename1} or /${window.__dynamic_base__}/assets/${filename2}`;}");
+    expect(result).toEqual("var reportError=function(e){return `Couldn't find ${window.__dynamic_base__}/assets/${filename1} or ${window.__dynamic_base__}/assets/${filename2}`;}");
   })
 
   test('transformChunk-mixed-strings-and-templates', async () => {
     const code = "const someString = \"Hello World!\"; const someTemplate = \`${Math.random()} is a random number.\`; const myPath = `/${someVar}/__dynamic_base__/image.png`; const strPath = '/assets/__dynamic_base__/image2.png';";
     const result = await transformChunk(code, options);
-    expect(result).toEqual("const someString = \"Hello World!\"; const someTemplate = \`${Math.random()} is a random number.\`; const myPath = `/${someVar}/${window.__dynamic_base__}/image.png`; const strPath = '/assets'+window.__dynamic_base__+'/image2.png';")
+    expect(result).toEqual("const someString = \"Hello World!\"; const someTemplate = \`${Math.random()} is a random number.\`; const myPath = `/${someVar}${window.__dynamic_base__}/image.png`; const strPath = '/assets'+window.__dynamic_base__+'/image2.png';")
+  })
+
+  test('transformChunk-vite8-template-asset-url', async () => {
+    const code = "const iconUrl = `/__dynamic_base__/assets/icon.svg`"
+    const result = await transformChunk(code, options)
+    expect(result).toEqual("const iconUrl = `${window.__dynamic_base__}/assets/icon.svg`")
   })
 })
