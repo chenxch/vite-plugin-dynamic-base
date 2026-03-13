@@ -40,5 +40,5 @@ export function replaceInStringLiteral(literal: StringLiteral, base: string, pla
 
 export function replaceInTemplateElement(element: TemplateElement, base: string, placeholder: string): string {
   const regex = new RegExp(base, 'g');
-  return element.raw.replace(regex, () => '/${' + placeholder + '}/');
+  return element.raw.replace(regex, () => '${' + placeholder + '}/');
 }
